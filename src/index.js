@@ -1,3 +1,4 @@
+const path = require("path");
 const vscode = require("vscode");
 
 function activate(context) {
@@ -8,11 +9,12 @@ function activate(context) {
         "toggleDetails",
         "Toggle Details",
         vscode.ViewColumn.One,
-        {}
+        {
+          enableScripts: true
+        }
       );
 
-      // And set its HTML content
-      panel.webview.html = getWebviewContent();
+      panel.webview.html = getWebviewContent(context);
     })
   );
 }
@@ -21,7 +23,12 @@ exports.activate = activate;
 function deactivate() {}
 exports.deactivate = deactivate;
 
-function getWebviewContent() {
+function getWebviewContent(context) {
+  const scriptPathOnDisk = vscode.Uri.file(
+    path.join(context.extensionPath, "dist", "bundle.js")
+  );
+
+  const scriptUri = scriptPathOnDisk.with({ scheme: "vscode-resource" });
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,7 +37,8 @@ function getWebviewContent() {
     <title>Cat Coding</title>
 </head>
 <body>
-<script src="/dist/bundle.js"></script>
+<div id="lanceDarklyApp"></div>
+<script src="${scriptUri}"></script>
 </body>
 </html>`;
 }
