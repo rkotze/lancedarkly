@@ -1,0 +1,71 @@
+{
+  "name": "LanceDarkly",
+  "displayName": "LanceDarkly - view LaunchDarkly toggle info",
+  "description": "TBC",
+  "version": "0.0.1",
+  "publisher": "RichardKotze",
+  "engines": {
+    "vscode": "^1.29.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rkotze/lancedarkly.git"
+  },
+  "categories": [
+    "Other"
+  ],
+  "icon": "/needs/logo",
+  "galleryBanner": {
+    "color": "#232323",
+    "theme": "dark"
+  },
+  "author": {
+    "name": "Richard Kotze",
+    "email": "richkotze@outlook.com"
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./src/index",
+  "keywords": [
+    "toggles",
+    "ci",
+    "launchdarkly"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "lancedarkly.viewToggle",
+        "title": "view toggle",
+        "category": "LanceDarkly"
+      }
+    ]
+  },
+  "scripts": {
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "jest",
+    "ui-test": "node ./node_modules/vscode/bin/test",
+    "preversion": "npm test",
+    "build": "webpack --config webpack.config.js -p"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-1": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "eslint": "^4.11.0",
+    "jest": "^24.1.0",
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0",
+    "vscode": "^1.1.26",
+    "webpack": "^4.20.2",
+    "webpack-cli": "^3.1.2"
+  },
+  "jest": {
+    "testPathIgnorePatterns": [
+      "/test/"
+    ]
+  }
+}
