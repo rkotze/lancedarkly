@@ -35,8 +35,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "lancedarkly.viewToggle",
-        "title": "view toggle",
+        "command": "lancedarkly.toggleDetails",
+        "title": "View toggle",
         "category": "LanceDarkly"
       }
     ]
