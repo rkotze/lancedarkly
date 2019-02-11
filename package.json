@@ -39,7 +39,36 @@
         "title": "View toggle",
         "category": "LanceDarkly"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "LanceDarkly",
+      "properties": {
+        "LanceDarkly.projects": {
+          "type": "array",
+          "default": [{
+            "key": "",
+            "accessToken": ""
+          }],
+          "description": "List of LaunchDarkly project `{ keys: 'project-key', accessToken: 'api-guid' }`"
+        },
+        "LanceDarkly.baseURI": {
+          "type": "string",
+          "default": "https://app.launchdarkly.com",
+          "description": "LaunchDarkly base uri"
+        },
+        "LanceDarkly.defaultEnvironment": {
+          "type": "string",
+          "default": null,
+          "description": "Set to key of default environment"
+        },
+        "LanceDarkly.defaultProject": {
+          "type": "string",
+          "default": null,
+          "description": "Set to key of default Project"
+        }
+      }
+    }
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",
