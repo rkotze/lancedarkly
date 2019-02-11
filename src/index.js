@@ -4,7 +4,6 @@ const vscode = require("vscode");
 function activate(context) {
   context.subscriptions.push(
     vscode.commands.registerCommand("lancedarkly.viewToggle", () => {
-      // Create and show panel
       const panel = vscode.window.createWebviewPanel(
         "toggleDetails",
         "Toggle Details",
@@ -15,6 +14,17 @@ function activate(context) {
       );
 
       panel.webview.html = getWebviewContent(context);
+      panel.webview.onDidReceiveMessage(
+        message => {
+          switch (message.command) {
+            case "alert":
+              vscode.window.showErrorMessage(message.text);
+              return;
+          }
+        },
+        undefined,
+        context.subscriptions
+      );
     })
   );
 }

@@ -3,25 +3,32 @@ import ReactDOM from "react-dom";
 
 const vscode = acquireVsCodeApi();
 
-function action() {
-  const clicked = vscode.window.showInformationMessage("Toggled me On", [
-    "Off"
-  ]);
-  console.log("clicked: ", clicked);
-}
-
 // examples https://code.visualstudio.com/api/extension-guides/webview
 
-const App = () => {
-  return (
-    <div>
-      <h2>LanceDarkly</h2>
-      <p>
-        Toggle Key: <code>toggle-key-goes-here</code>
-      </p>
-      <button onClick={action}>Toggle On</button>
-    </div>
-  );
-};
+class App extends React.Component {
+  componentDidMount() {
+    vscode.postMessage({
+      command: "alert",
+      text: "🐛  on line "
+    });
+  }
+  handleClick = () => {
+    vscode.postMessage({
+      command: "alert",
+      text: "🐛  on line "
+    });
+  };
+  render() {
+    return (
+      <div>
+        <h2>LanceDarkly</h2>
+        <p>
+          Toggle Key: <code>toggle-key-goes-here</code>
+        </p>
+        <button onClick={this.handleClick}>Toggle On</button>
+      </div>
+    );
+  }
+}
 
-ReactDOM.render(<App />, document.body);
+ReactDOM.render(<App />, document.getElementById("lanceDarklyApp"));
