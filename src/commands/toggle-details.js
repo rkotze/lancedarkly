@@ -1,7 +1,7 @@
 const path = require("path");
 const vscode = require("vscode");
 
-function toggleDetails({context}) {
+function toggleDetails({ context }) {
   context.subscriptions.push(
     vscode.commands.registerCommand("lancedarkly.toggleDetails", () => {
       const panel = vscode.window.createWebviewPanel(
@@ -25,6 +25,16 @@ function toggleDetails({context}) {
         undefined,
         context.subscriptions
       );
+
+      const settings = vscode.workspace.getConfiguration("LanceDarkly");
+      const accessToken = settings.get("accessToken");
+      const defaultProject = settings.get("defaultProject");
+      panel.webview.postMessage({
+        config: {
+          accessToken,
+          defaultProject
+        }
+      });
     })
   );
 }

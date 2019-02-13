@@ -2,10 +2,11 @@ import React from "react";
 
 export class ListToggles extends React.Component {
   state = {
-    toggles: []
+    toggles: [],
+    config: {}
   };
 
-  async fetchToggles() {
+  async fetchToggles({ accessToken, defaultProject }) {
     const { vscode } = this.props;
 
     vscode.postMessage({
@@ -14,10 +15,10 @@ export class ListToggles extends React.Component {
     });
 
     const rawFlags = await fetch(
-      "https://app.launchdarkly.com/api/v2/flags/fmp",
+      `https://app.launchdarkly.com/api/v2/flags/${defaultProject}`,
       {
         headers: new Headers({
-          Authorization: ""
+          Authorization: accessToken
         })
       }
     );
@@ -28,7 +29,13 @@ export class ListToggles extends React.Component {
   }
 
   componentDidMount() {
-    this.fetchToggles();
+    window.addEventListener("message", event => {
+      const config = event.data.config;
+      this.fetchToggles({
+        accessToken: config.accessToken,
+        defaultProject: config.defaultProject
+      });
+    });
   }
 
   render() {
