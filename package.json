@@ -49,15 +49,20 @@
           "default": [
             {
               "key": "",
-              "accessToken": ""
+              "title": ""
             }
           ],
-          "description": "List of LaunchDarkly project `{ keys: 'project-key', accessToken: 'api-guid' }`"
+          "description": "List of LaunchDarkly project `{ keys: 'project-key', title: 'readable name' }`"
         },
         "LanceDarkly.baseURI": {
           "type": "string",
           "default": "https://app.launchdarkly.com",
           "description": "LaunchDarkly base uri"
+        },
+        "LanceDarkly.accessToken": {
+          "type": "string",
+          "default": "",
+          "description": "LaunchDarkly personal access token. Starts with api-"
         },
         "LanceDarkly.defaultEnvironment": {
           "type": "string",
