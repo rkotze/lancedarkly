@@ -46,10 +46,12 @@
       "properties": {
         "LanceDarkly.projects": {
           "type": "array",
-          "default": [{
-            "key": "",
-            "accessToken": ""
-          }],
+          "default": [
+            {
+              "key": "",
+              "accessToken": ""
+            }
+          ],
           "description": "List of LaunchDarkly project `{ keys: 'project-key', accessToken: 'api-guid' }`"
         },
         "LanceDarkly.baseURI": {
@@ -80,6 +82,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
+    "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-1": "^6.24.1",

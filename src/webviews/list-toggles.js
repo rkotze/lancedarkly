@@ -1,15 +1,11 @@
 import React from "react";
 
-// const vscode = acquireVsCodeApi();
-
 export class ListToggles extends React.Component {
   state = {
     toggles: []
   };
 
-  fetchToggles() {
-    // console.log("HELLO: ", fetch);
-
+  async fetchToggles() {
     const { vscode } = this.props;
 
     vscode.postMessage({
@@ -17,21 +13,18 @@ export class ListToggles extends React.Component {
       text: "What is this? " + fetch
     });
 
-    fetch("https://app.launchdarkly.com/api/v2/flags/fmp", {
-      headers: new Headers({
-        Authorization: ""
-      })
-    })
-      .then(response => response.json())
-      .then(flags => {
-        this.setState({
-          toggles: flags.items
-        });
-      });
-    // const flags = await rawFlags.json();
-    // this.setState({
-    //   toggles: flags
-    // })
+    const rawFlags = await fetch(
+      "https://app.launchdarkly.com/api/v2/flags/fmp",
+      {
+        headers: new Headers({
+          Authorization: ""
+        })
+      }
+    );
+    const flags = await rawFlags.json();
+    this.setState({
+      toggles: flags.items
+    });
   }
 
   componentDidMount() {
