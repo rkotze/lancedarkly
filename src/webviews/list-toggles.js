@@ -6,22 +6,14 @@ export class ListToggles extends React.Component {
     config: {}
   };
 
-  async fetchToggles({ accessToken, defaultProject }) {
+  async fetchToggles({ accessToken, defaultProject, baseURI }) {
     const { vscode } = this.props;
 
-    vscode.postMessage({
-      command: "alert",
-      text: "What is this? " + fetch
+    const rawFlags = await fetch(`${baseURI}/api/v2/flags/${defaultProject}`, {
+      headers: new Headers({
+        Authorization: accessToken
+      })
     });
-
-    const rawFlags = await fetch(
-      `https://app.launchdarkly.com/api/v2/flags/${defaultProject}`,
-      {
-        headers: new Headers({
-          Authorization: accessToken
-        })
-      }
-    );
     const flags = await rawFlags.json();
     this.setState({
       toggles: flags.items
