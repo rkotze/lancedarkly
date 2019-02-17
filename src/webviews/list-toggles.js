@@ -1,4 +1,5 @@
 import React from "react";
+import { VsCodeContext } from "./vs-code-context/index";
 
 export class ListToggles extends React.Component {
   state = {
@@ -7,7 +8,11 @@ export class ListToggles extends React.Component {
   };
 
   async fetchToggles({ accessToken, defaultProject, baseURI }) {
-    const { vscode } = this.props;
+    const { vscode } = this.context;
+    vscode.postMessage({
+      command: "alert",
+      text: "Im using a React context"
+    });
 
     const rawFlags = await fetch(`${baseURI}/api/v2/flags/${defaultProject}`, {
       headers: new Headers({
@@ -24,6 +29,7 @@ export class ListToggles extends React.Component {
     window.addEventListener("message", event => {
       const config = event.data.config;
       this.fetchToggles({
+        baseURI: config.baseURI,
         accessToken: config.accessToken,
         defaultProject: config.defaultProject
       });
@@ -41,3 +47,5 @@ export class ListToggles extends React.Component {
     );
   }
 }
+
+ListToggles.contextType = VsCodeContext;
