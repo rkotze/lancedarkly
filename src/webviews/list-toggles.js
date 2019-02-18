@@ -27,7 +27,8 @@ export class ListToggles extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener("message", event => {
+    const { vscodeSubscribe } = this.context;
+    vscodeSubscribe(event => {
       if (event.data.config) {
         const config = event.data.config;
         this.fetchToggles({

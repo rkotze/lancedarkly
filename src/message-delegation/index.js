@@ -1,5 +1,5 @@
 function log(arg) {
-  console.log("log: ", this, arg);
+  console.log("log: ", arg);
   this.postMessage({
     test: "toggle datasssszzzzzz"
   });
