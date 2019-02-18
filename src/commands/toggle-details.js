@@ -1,6 +1,8 @@
 const path = require("path");
 const vscode = require("vscode");
 
+const { messageListener } = require("../message-delegation/");
+
 function toggleDetails({ context }) {
   const settings = vscode.workspace.getConfiguration("LanceDarkly");
   const accessToken = settings.get("accessToken");
@@ -19,17 +21,7 @@ function toggleDetails({ context }) {
       );
 
       panel.webview.html = getWebviewContent(context);
-      panel.webview.onDidReceiveMessage(
-        message => {
-          switch (message.command) {
-            case "alert":
-              vscode.window.showErrorMessage(message.text);
-              return;
-          }
-        },
-        undefined,
-        context.subscriptions
-      );
+      messageListener(panel.webview, context);
 
       panel.webview.postMessage({
         config: {
