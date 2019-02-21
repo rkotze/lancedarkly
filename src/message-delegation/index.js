@@ -1,3 +1,6 @@
+const { fetchTogglesAction } = require("../fetch-toggles");
+
+// example function
 function log(arg) {
   console.log("log: ", arg);
   this.postMessage({
@@ -14,7 +17,7 @@ function delegator(webview, commandArray) {
 
 exports.messageListener = function messageListener(webview, context) {
   webview.onDidReceiveMessage(
-    delegator(webview, [{ name: "log", fn: log }]),
+    delegator(webview, [{ name: "log", fn: log }, fetchTogglesAction]),
     undefined,
     context.subscriptions
   );

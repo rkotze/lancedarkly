@@ -104,5 +104,8 @@
     "testPathIgnorePatterns": [
       "/test/"
     ]
+  },
+  "dependencies": {
+    "node-fetch": "^2.3.0"
   }
 }

@@ -5,10 +5,7 @@ const { messageListener } = require("../message-delegation/");
 
 function toggleDetails({ context }) {
   const settings = vscode.workspace.getConfiguration("LanceDarkly");
-  const accessToken = settings.get("accessToken");
   const defaultProject = settings.get("defaultProject");
-  const baseURI = settings.get("baseURI");
-
   context.subscriptions.push(
     vscode.commands.registerCommand("lancedarkly.toggleDetails", () => {
       const panel = vscode.window.createWebviewPanel(
@@ -22,14 +19,6 @@ function toggleDetails({ context }) {
 
       panel.webview.html = getWebviewContent(context);
       messageListener(panel.webview, context);
-
-      panel.webview.postMessage({
-        config: {
-          accessToken,
-          defaultProject,
-          baseURI
-        }
-      });
     })
   );
 }
