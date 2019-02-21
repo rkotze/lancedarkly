@@ -9,8 +9,10 @@ export class ListToggles extends React.Component {
 
   componentDidMount() {
     const { vscodeSubscribe, vscode } = this.context;
+    const appState = vscode.getState();
     vscodeSubscribe(event => {
       if (event.data.fetchToggles) {
+        vscode.setState({ toggles: event.data.fetchToggles });
         this.setState({ toggles: event.data.fetchToggles });
       }
 
@@ -18,9 +20,14 @@ export class ListToggles extends React.Component {
         this.setState({ testData: event.data.test });
       }
     });
-    vscode.postMessage({
-      name: "fetchToggles"
-    });
+
+    if (!appState || !appState.toggles) {
+      vscode.postMessage({
+        name: "fetchToggles"
+      });
+    } else {
+      this.setState({ toggles: appState.toggles });
+    }
     vscode.postMessage({
       name: "log",
       args: ["Im using a React context"]
