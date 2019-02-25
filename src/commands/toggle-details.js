@@ -13,7 +13,8 @@ function toggleDetails({ context }) {
         `LanceDarkly: ${defaultProject}`,
         vscode.ViewColumn.One,
         {
-          enableScripts: true
+          enableScripts: true,
+          retainContextWhenHidden: true // prevents rebuilding the view when switching tabs
         }
       );
 

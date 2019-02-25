@@ -25,8 +25,6 @@ export class ListToggles extends React.Component {
       vscode.postMessage({
         name: "fetchToggles"
       });
-    } else {
-      this.setState({ toggles: appState.toggles });
     }
     vscode.postMessage({
       name: "log",
