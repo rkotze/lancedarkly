@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 import { VsCodeContext } from "./vs-code-context/index";
+import { ToggleDetails } from "./toggle-details";
 
 const ToggleViews = styled.div`
   display: grid;
@@ -90,41 +91,7 @@ export class ListToggles extends React.Component {
           </NoBullets>
         </div>
         <div>
-          {toggleDetails && (
-            <div>
-              <h3>{toggleDetails.name}</h3>
-              <p>
-                <label>Date: </label>{" "}
-                {new Date(toggleDetails.creationDate).toString()}
-              </p>
-              <p>
-                <label>Description:</label> {toggleDetails.description}
-              </p>
-              <p>
-                <label>Key:</label> {toggleDetails.key} <label>kind:</label>{" "}
-                {toggleDetails.kind}
-              </p>
-              <div>
-                {Object.keys(toggleDetails.environments).map(prop => {
-                  const envDetails = toggleDetails.environments[prop];
-                  return (
-                    <p>
-                      {envDetails._environmentName}{" "}
-                      {envDetails.on ? "On" : "Off"}{" "}
-                      <a
-                        href={`https://app.launchdarkly.com${
-                          envDetails._site.href
-                        }`}
-                        target="_blank"
-                      >
-                        View in LaunchDarkly
-                      </a>
-                    </p>
-                  );
-                })}
-              </div>
-            </div>
-          )}
+          {toggleDetails && <ToggleDetails toggleDetails={toggleDetails} />}
         </div>
       </ToggleViews>
     );
