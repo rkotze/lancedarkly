@@ -24,11 +24,16 @@ const ButtonLink = styled.a`
   display: block;
   border: none;
   border-radius: 4px;
-  background-color: #333;
+  color: #0c6c8c;
+  border: 1px solid #0c6c8c;
   padding: 8px;
   text-decoration: none;
   &:focus {
     outline: none;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #0c6c8c;
   }
 `;
 
