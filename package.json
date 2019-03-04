@@ -64,11 +64,6 @@
           "default": "",
           "description": "LaunchDarkly personal access token. Starts with api-"
         },
-        "LanceDarkly.defaultEnvironment": {
-          "type": "string",
-          "default": null,
-          "description": "Set to key of default environment"
-        },
         "LanceDarkly.defaultProject": {
           "type": "string",
           "default": null,
