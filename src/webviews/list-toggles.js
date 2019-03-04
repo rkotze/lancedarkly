@@ -40,7 +40,6 @@ const ButtonLink = styled.a`
 export class ListToggles extends React.Component {
   state = {
     toggles: [],
-    testData: "",
     toggleDetails: null
   };
 
@@ -62,10 +61,6 @@ export class ListToggles extends React.Component {
       if (event.data.fetchToggles) {
         vscode.setState({ toggles: event.data.fetchToggles });
         this.setState({ toggles: event.data.fetchToggles });
-      }
-
-      if (event.data.test) {
-        this.setState({ testData: event.data.test });
       }
     });
 
