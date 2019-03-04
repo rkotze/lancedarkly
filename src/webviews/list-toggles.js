@@ -5,10 +5,18 @@ import { VsCodeContext } from "./vs-code-context/index";
 import { ToggleDetails } from "./toggle-details";
 
 const ToggleViews = styled.div`
+  position: absolute;
   display: grid;
   grid-template-columns: 25% 74%;
   grid-template-rows: auto;
   grid-column-gap: 1%;
+  width: 95%;
+  height: 90%;
+`;
+
+const TogglesPanel = styled.div`
+  max-height: 100%;
+  overflow-y: auto;
 `;
 
 const NoBullets = styled.ul`
@@ -75,7 +83,7 @@ export class ListToggles extends React.Component {
     const { toggles, toggleDetails } = this.state;
     return (
       <ToggleViews>
-        <div>
+        <TogglesPanel>
           <NoBullets>
             {toggles.map(toggle => (
               <li key={toggle.key}>
@@ -89,7 +97,7 @@ export class ListToggles extends React.Component {
               </li>
             ))}
           </NoBullets>
-        </div>
+        </TogglesPanel>
         <div>
           {toggleDetails && <ToggleDetails toggleDetails={toggleDetails} />}
         </div>
