@@ -14,7 +14,7 @@
   "categories": [
     "Other"
   ],
-  "icon": "/needs/logo",
+  "icon": "resources/lancedarkly-logo.png",
   "galleryBanner": {
     "color": "#232323",
     "theme": "dark"
