@@ -7,9 +7,9 @@ function toggleDetails({ context }) {
   const settings = vscode.workspace.getConfiguration("LanceDarkly");
   const defaultProject = settings.get("defaultProject");
   context.subscriptions.push(
-    vscode.commands.registerCommand("lancedarkly.toggleDetails", () => {
+    vscode.commands.registerCommand("lancedarkly.listAllToggles", () => {
       const panel = vscode.window.createWebviewPanel(
-        "toggleDetails",
+        "listAllToggles",
         `LanceDarkly: ${defaultProject}`,
         vscode.ViewColumn.One,
         {

@@ -35,8 +35,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "lancedarkly.toggleDetails",
-        "title": "View toggle",
+        "command": "lancedarkly.listAllToggles",
+        "title": "List all toggles",
         "category": "LanceDarkly"
       }
     ],
