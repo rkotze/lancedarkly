@@ -47,10 +47,24 @@ const ButtonLink = styled.a`
   }
 `;
 
+const PositiveAlert = styled.div`
+  background-color: #29b28d;
+  color: #ffffff;
+  padding: 10px;
+  font-weight: bold;
+  border-radius: 4px;
+`;
+
+const FETCH_STATUS = {
+  FETCHING: "fetching",
+  ERROR: "error",
+  DONE: "done"
+};
 export class ListToggles extends React.Component {
   state = {
     toggles: [],
-    toggleDetails: null
+    toggleDetails: null,
+    fetchStatus: FETCH_STATUS.FETCHING
   };
 
   viewToggleDetails = e => {
@@ -69,8 +83,13 @@ export class ListToggles extends React.Component {
     const appState = vscode.getState();
     vscodeSubscribe(event => {
       if (event.data.fetchToggles) {
-        vscode.setState({ toggles: event.data.fetchToggles });
-        this.setState({ toggles: event.data.fetchToggles });
+        vscode.setState({
+          toggles: event.data.fetchToggles
+        });
+        this.setState({
+          toggles: event.data.fetchToggles,
+          fetchStatus: FETCH_STATUS.DONE
+        });
       }
     });
 
@@ -86,11 +105,14 @@ export class ListToggles extends React.Component {
   };
 
   render() {
-    const { toggles, toggleDetails } = this.state;
+    const { toggles, toggleDetails, fetchStatus } = this.state;
     return (
       <ToggleViews>
         <TogglesPanel>
           <FilterToggles onFilterToggles={this.onFilterToggles} />
+          {fetchStatus === FETCH_STATUS.FETCHING && (
+            <PositiveAlert>Fetching toggles ...</PositiveAlert>
+          )}
           <NoBullets>
             {toggles.map(toggle => (
               <li key={toggle.key}>
