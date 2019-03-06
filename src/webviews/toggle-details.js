@@ -1,29 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-
-const BaseBadge = styled.span`
-  display: inline-block;
-  border: none;
-  border-radius: 4px;
-  padding: 2px 12px;
-  margin: 0px 6px;
-  font-family: "Courier New", Courier, monospace;
-  font-weight: bold;
-  color: #222;
-`;
-
-const LightBadge = styled(BaseBadge)`
-  color: #0c6c8c;
-`;
-
-const SwitchBadge = styled(BaseBadge)`
-  background-color: ${({ toggleState }) =>
-    toggleState ? "#29B28D" : "#0C6C8C"};
-`;
-
-const ToggleBadge = styled(BaseBadge)`
-  background-color: #ffd981;
-`;
+import { ToggleBadge, LightBadge, SwitchBadge } from "./badge.styles";
 
 const EnvironmentToggleLayout = styled.div`
   display: grid;

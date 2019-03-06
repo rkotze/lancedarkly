@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { VsCodeContext } from "./vs-code-context/index";
 import { ToggleDetails } from "./toggle-details";
 import { FilterToggles } from "./filter-toggles";
+import { GreenBadge } from "./badge.styles";
 
 const ToggleViews = styled.div`
   position: absolute;
@@ -51,8 +52,13 @@ const PositiveAlert = styled.div`
   background-color: #29b28d;
   color: #ffffff;
   padding: 10px;
+  margin: 10px 0;
   font-weight: bold;
   border-radius: 4px;
+`;
+
+const Right = styled.div`
+  text-align: right;
 `;
 
 const FETCH_STATUS = {
@@ -110,6 +116,9 @@ export class ListToggles extends React.Component {
       <ToggleViews>
         <TogglesPanel>
           <FilterToggles onFilterToggles={this.onFilterToggles} />
+          <Right>
+            Total: <GreenBadge>{toggles.length}</GreenBadge>
+          </Right>
           {fetchStatus === FETCH_STATUS.FETCHING && (
             <PositiveAlert>Fetching toggles ...</PositiveAlert>
           )}
