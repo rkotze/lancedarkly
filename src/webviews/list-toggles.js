@@ -3,6 +3,7 @@ import styled from "styled-components";
 
 import { VsCodeContext } from "./vs-code-context/index";
 import { ToggleDetails } from "./toggle-details";
+import { FilterToggles } from "./filter-toggles";
 
 const ToggleViews = styled.div`
   position: absolute;
@@ -17,6 +18,7 @@ const ToggleViews = styled.div`
 const TogglesPanel = styled.div`
   max-height: 100%;
   overflow-y: auto;
+  padding-right: 10px;
 `;
 
 const NoBullets = styled.ul`
@@ -79,11 +81,16 @@ export class ListToggles extends React.Component {
     }
   }
 
+  onFilterToggles = toggles => {
+    this.setState({ toggles });
+  };
+
   render() {
     const { toggles, toggleDetails } = this.state;
     return (
       <ToggleViews>
         <TogglesPanel>
+          <FilterToggles onFilterToggles={this.onFilterToggles} />
           <NoBullets>
             {toggles.map(toggle => (
               <li key={toggle.key}>
