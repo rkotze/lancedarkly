@@ -9,17 +9,15 @@ const InputField = styled.input`
   border: 1px solid #29b28d;
   border-radius: 4px;
   padding: 6px;
-  width: 95%;
+  width: 400px;
   &:focus {
     outline: none;
   }
+  margin: 0;
 `;
 
 const FilterForm = styled.form`
   margin: 10px 0;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  grid-column-gap: 1%;
 `;
 
 export class FilterToggles extends Component {
@@ -42,7 +40,9 @@ export class FilterToggles extends Component {
   render() {
     return (
       <FilterForm>
-        <label>Search toggles: </label>
+        <p>
+          <label>Search toggles: </label>
+        </p>
         <InputField
           name="filter"
           onChange={this.onChangeHander}

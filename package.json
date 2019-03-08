@@ -1,7 +1,7 @@
 {
   "name": "LanceDarkly",
-  "displayName": "LanceDarkly - view LaunchDarkly toggle info",
-  "description": "TBC",
+  "displayName": "LanceDarkly - view LaunchDarkly toggles",
+  "description": "View LaunchDarkly toggle details",
   "version": "0.0.1",
   "publisher": "RichardKotze",
   "engines": {

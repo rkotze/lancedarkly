@@ -35,16 +35,18 @@ const ButtonLink = styled.a`
   display: block;
   border: none;
   border-radius: 4px;
-  color: #0c6c8c;
+  color: #ffffff;
   border: 1px solid #0c6c8c;
+  background-color: #0c6c8c;
   padding: 8px;
   text-decoration: none;
   &:focus {
     outline: none;
   }
   &:hover {
-    color: #fff;
-    background-color: #0c6c8c;
+    color: #ffffff;
+    border: 1px solid #29b28d;
+    background-color: #29b28d;
   }
 `;
 
@@ -113,33 +115,36 @@ export class ListToggles extends React.Component {
   render() {
     const { toggles, toggleDetails, fetchStatus } = this.state;
     return (
-      <ToggleViews>
-        <TogglesPanel>
-          <FilterToggles onFilterToggles={this.onFilterToggles} />
-          <Right>
-            Total: <GreenBadge>{toggles.length}</GreenBadge>
-          </Right>
-          {fetchStatus === FETCH_STATUS.FETCHING && (
-            <PositiveAlert>Fetching toggles ...</PositiveAlert>
-          )}
-          <NoBullets>
-            {toggles.map(toggle => (
-              <li key={toggle.key}>
-                <ButtonLink
-                  href="#"
-                  onClick={this.viewToggleDetails}
-                  data-toggle-key={toggle.key}
-                >
-                  {toggle.name}
-                </ButtonLink>
-              </li>
-            ))}
-          </NoBullets>
-        </TogglesPanel>
-        <div>
-          {toggleDetails && <ToggleDetails toggleDetails={toggleDetails} />}
-        </div>
-      </ToggleViews>
+      <div>
+        <FilterToggles onFilterToggles={this.onFilterToggles} />
+
+        <ToggleViews>
+          <TogglesPanel>
+            <Right>
+              Total: <GreenBadge>{toggles.length}</GreenBadge>
+            </Right>
+            {fetchStatus === FETCH_STATUS.FETCHING && (
+              <PositiveAlert>Fetching toggles ...</PositiveAlert>
+            )}
+            <NoBullets>
+              {toggles.map(toggle => (
+                <li key={toggle.key}>
+                  <ButtonLink
+                    href="#"
+                    onClick={this.viewToggleDetails}
+                    data-toggle-key={toggle.key}
+                  >
+                    {toggle.name}
+                  </ButtonLink>
+                </li>
+              ))}
+            </NoBullets>
+          </TogglesPanel>
+          <div>
+            {toggleDetails && <ToggleDetails toggleDetails={toggleDetails} />}
+          </div>
+        </ToggleViews>
+      </div>
     );
   }
 }
