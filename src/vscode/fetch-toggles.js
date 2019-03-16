@@ -16,7 +16,7 @@ async function fetchToggles() {
 
 async function fetchTogglesMessage() {
   const toggles = await fetchToggles();
-  this.postMessage({
+  this.webview.postMessage({
     fetchToggles: toggles.items
   });
 }

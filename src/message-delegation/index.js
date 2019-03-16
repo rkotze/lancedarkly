@@ -1,9 +1,10 @@
-const { fetchTogglesAction } = require("../fetch-toggles");
+const { fetchTogglesAction } = require("../vscode/fetch-toggles");
+const { resolveFilesAction } = require("../vscode/resolve-files");
 
 // example function
 function log(arg) {
   console.log("log: ", arg);
-  this.postMessage({
+  this.webview.postMessage({
     test: "toggle datasssszzzzzz"
   });
 }
@@ -17,7 +18,11 @@ function delegator(webview, commandArray) {
 
 exports.messageListener = function messageListener(webview, context) {
   webview.onDidReceiveMessage(
-    delegator(webview, [{ name: "log", fn: log }, fetchTogglesAction]),
+    delegator({ webview, context }, [
+      { name: "log", fn: log },
+      fetchTogglesAction,
+      resolveFilesAction
+    ]),
     undefined,
     context.subscriptions
   );

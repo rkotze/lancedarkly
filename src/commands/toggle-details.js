@@ -32,6 +32,12 @@ function getWebviewContent(context) {
 
   const scriptUri = scriptPathOnDisk.with({ scheme: "vscode-resource" });
 
+  const mediaPathOnDisk = vscode.Uri.file(
+    path.join(context.extensionPath, "media")
+  );
+
+  const mediaUri = mediaPathOnDisk.with({ scheme: "vscode-resource" });
+
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,6 +46,7 @@ function getWebviewContent(context) {
 </head>
 <body>
 <div id="lanceDarklyApp"></div>
+<script>var MEDIA_URI = '${mediaUri}'</script>
 <script src="${scriptUri}"></script>
 </body>
 </html>`;
