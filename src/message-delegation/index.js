@@ -1,5 +1,4 @@
 const { fetchTogglesAction } = require("../vscode/fetch-toggles");
-const { resolveFilesAction } = require("../vscode/resolve-files");
 
 // example function
 function log(arg) {
@@ -20,8 +19,7 @@ exports.messageListener = function messageListener(webview, context) {
   webview.onDidReceiveMessage(
     delegator({ webview, context }, [
       { name: "log", fn: log },
-      fetchTogglesAction,
-      resolveFilesAction
+      fetchTogglesAction
     ]),
     undefined,
     context.subscriptions
