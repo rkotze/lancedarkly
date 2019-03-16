@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { colours } from "./colour-constants.styles";
+
 export const ToggleViews = styled.div`
   position: absolute;
   display: grid;
@@ -26,8 +28,8 @@ export const ButtonLink = styled.a`
   border: none;
   border-radius: 4px;
   color: #ffffff;
-  border: 1px solid #0c6c8c;
-  background-color: #0c6c8c;
+  border: 1px solid ${colours.blue};
+  background-color: ${colours.blue};
   padding: 8px;
   text-decoration: none;
   &:focus {
@@ -35,12 +37,12 @@ export const ButtonLink = styled.a`
   }
   &:hover {
     color: #ffffff;
-    border: 1px solid #29b28d;
-    background-color: #29b28d;
+    border: 1px solid ${colours.green};
+    background-color: ${colours.green};
   }
 `;
 export const PositiveAlert = styled.div`
-  background-color: #29b28d;
+  background-color: ${colours.green};
   color: #ffffff;
   padding: 10px;
   margin: 10px 0;

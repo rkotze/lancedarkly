@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { colours } from "./colour-constants.styles";
 const BaseBadge = styled.span`
   display: inline-block;
   border: none;
@@ -9,18 +10,18 @@ const BaseBadge = styled.span`
   color: #222;
 `;
 export const GreenBadge = styled(BaseBadge)`
-  background-color: #29b28d;
+  background-color: ${colours.green};
 `;
 export const LightBadge = styled(BaseBadge)`
   margin: 0px 6px;
-  color: #0c6c8c;
+  color: ${colours.blue};
 `;
 export const SwitchBadge = styled(BaseBadge)`
   margin: 0px 6px;
   background-color: ${({ toggleState }) =>
-    toggleState ? "#29B28D" : "#0C6C8C"};
+    toggleState ? colours.green : colours.blue};
 `;
 export const ToggleBadge = styled(BaseBadge)`
   margin: 0px 6px;
-  background-color: #ffd981;
+  background-color: ${colours.yellow};
 `;
