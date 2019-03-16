@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { VsCodeContext } from "./vs-code-context/index";
 import { ToggleDetails } from "./toggle-details";
@@ -18,36 +18,30 @@ const FETCH_STATUS = {
   ERROR: "error",
   DONE: "done"
 };
-export class ListToggles extends React.Component {
-  state = {
-    toggles: [],
-    toggleDetails: null,
-    fetchStatus: FETCH_STATUS.FETCHING
-  };
 
-  viewToggleDetails = e => {
+export function ListToggles() {
+  const { vscodeSubscribe, vscode } = useContext(VsCodeContext);
+  const [toggles, setToggles] = useState([]);
+  const [toggleDetails, setToggleDetails] = useState(null);
+  const [fetchStatus, setFetchStatus] = useState(FETCH_STATUS.FETCHING);
+
+  function viewToggleDetails(e) {
     e.preventDefault();
     const toggleKey = e.target.getAttribute("data-toggle-key");
-    const toggleDetails = this.state.toggles.find(
-      toggle => toggle.key === toggleKey
-    );
-    this.setState({
-      toggleDetails
-    });
-  };
+    const toggleDetails = toggles.find(toggle => toggle.key === toggleKey);
+    setToggleDetails(toggleDetails);
+  }
 
-  componentDidMount() {
-    const { vscodeSubscribe, vscode } = this.context;
+  useEffect(() => {
     const appState = vscode.getState();
     vscodeSubscribe(event => {
-      if (event.data.fetchToggles) {
+      const { fetchToggles } = event.data;
+      if (fetchToggles) {
         vscode.setState({
-          toggles: event.data.fetchToggles
+          toggles: fetchToggles
         });
-        this.setState({
-          toggles: event.data.fetchToggles,
-          fetchStatus: FETCH_STATUS.DONE
-        });
+        setToggles(fetchToggles);
+        setFetchStatus(FETCH_STATUS.DONE);
       }
     });
 
@@ -56,47 +50,38 @@ export class ListToggles extends React.Component {
         name: "fetchToggles"
       });
     }
-  }
+  });
 
-  onFilterToggles = toggles => {
-    this.setState({ toggles });
-  };
+  return (
+    <div>
+      <FilterToggles onFilterToggles={setToggles} />
 
-  render() {
-    const { toggles, toggleDetails, fetchStatus } = this.state;
-    return (
-      <div>
-        <FilterToggles onFilterToggles={this.onFilterToggles} />
-
-        <ToggleViews>
-          <TogglesPanel>
-            <Right>
-              Total: <GreenBadge>{toggles.length}</GreenBadge>
-            </Right>
-            {fetchStatus === FETCH_STATUS.FETCHING && (
-              <PositiveAlert>Fetching toggles ...</PositiveAlert>
-            )}
-            <NoBullets>
-              {toggles.map(toggle => (
-                <li key={toggle.key}>
-                  <ButtonLink
-                    href="#"
-                    onClick={this.viewToggleDetails}
-                    data-toggle-key={toggle.key}
-                  >
-                    {toggle.name}
-                  </ButtonLink>
-                </li>
-              ))}
-            </NoBullets>
-          </TogglesPanel>
-          <div>
-            {toggleDetails && <ToggleDetails toggleDetails={toggleDetails} />}
-          </div>
-        </ToggleViews>
-      </div>
-    );
-  }
+      <ToggleViews>
+        <TogglesPanel>
+          <Right>
+            Total: <GreenBadge>{toggles.length}</GreenBadge>
+          </Right>
+          {fetchStatus === FETCH_STATUS.FETCHING && (
+            <PositiveAlert>Fetching toggles ...</PositiveAlert>
+          )}
+          <NoBullets>
+            {toggles.map(toggle => (
+              <li key={toggle.key}>
+                <ButtonLink
+                  href="#"
+                  onClick={viewToggleDetails}
+                  data-toggle-key={toggle.key}
+                >
+                  {toggle.name}
+                </ButtonLink>
+              </li>
+            ))}
+          </NoBullets>
+        </TogglesPanel>
+        <div>
+          {toggleDetails && <ToggleDetails toggleDetails={toggleDetails} />}
+        </div>
+      </ToggleViews>
+    </div>
+  );
 }
-
-ListToggles.contextType = VsCodeContext;
