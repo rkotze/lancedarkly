@@ -40,13 +40,10 @@ export class FilterToggles extends Component {
   render() {
     return (
       <FilterForm>
-        <p>
-          <label>Search toggles: </label>
-        </p>
         <InputField
           name="filter"
           onChange={this.onChangeHander}
-          placeholder="Filter by name"
+          placeholder="Search toggles"
         />
       </FilterForm>
     );
