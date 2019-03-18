@@ -1,5 +1,5 @@
 import React from "react";
-import { LanceBar, Logo, Title } from "./lance-bar";
+import { LanceBar, Logo, Title } from "./lance-bar.styles";
 
 export function Layout({ children }) {
   return (

@@ -8,7 +8,7 @@ export const ToggleViews = styled.div`
   grid-template-rows: auto;
   grid-column-gap: 1%;
   width: 95%;
-  height: 90%;
+  height: 85%;
 `;
 export const TogglesPanel = styled.div`
   max-height: 100%;

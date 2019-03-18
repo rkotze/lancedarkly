@@ -6,7 +6,8 @@ export const LanceBar = styled.div`
 export const Logo = styled.img`
   width: 50px;
   height: 50px;
-  margin-right 6px;
+  margin-right: 6px;
+  margin-top: 8px;
 `;
 export const Title = styled.h2`
   font-weight: normal;
