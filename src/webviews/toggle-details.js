@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import { ToggleBadge, LightBadge, SwitchBadge } from "./badge.styles";
+import { LightBadge, SwitchBadge, GreenBadge } from "./badge.styles";
+import { CopyText } from "./copy-button";
 
 const EnvironmentToggleLayout = styled.div`
   display: grid;
@@ -21,7 +22,11 @@ export function ToggleDetails({ toggleDetails }) {
         <label>Description:</label> {toggleDetails.description}
       </p>
       <p>
-        <label>Key:</label> <ToggleBadge>{toggleDetails.key}</ToggleBadge>
+        <label>Key:</label> <GreenBadge>{toggleDetails.key}</GreenBadge>
+        {"   "}
+        <CopyText textToCopy={toggleDetails.key} successText="Copied">
+          Copy key
+        </CopyText>
         {"   "}
         <label>kind:</label> <LightBadge>{toggleDetails.kind}</LightBadge>
       </p>
