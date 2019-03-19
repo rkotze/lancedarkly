@@ -76,7 +76,6 @@
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "jest",
     "ui-test": "node ./node_modules/vscode/bin/test",
-    "preversion": "npm test",
     "build": "webpack --config webpack.config.js -p"
   },
   "devDependencies": {
