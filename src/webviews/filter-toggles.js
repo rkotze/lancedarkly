@@ -27,9 +27,12 @@ export class FilterToggles extends Component {
     const toggles = vscode.getState().toggles;
 
     const searchText = filterText.toLowerCase();
-    return toggles.filter(toggle =>
-      toggle.name.toLowerCase().includes(searchText)
-    );
+    return toggles.filter(toggle => {
+      const searchableText = `${toggle.name} ${
+        toggle.description
+      }`.toLowerCase();
+      return searchableText.includes(searchText);
+    });
   };
 
   onChangeHander = e => {

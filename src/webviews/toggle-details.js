@@ -35,7 +35,7 @@ export function ToggleDetails({ toggleDetails }) {
     <div>
       <h2>{toggleDetails.name}</h2>
       <p>
-        <ThemeLabel>Created Date: </ThemeLabel>{" "}
+        <ThemeLabel>Created Date:</ThemeLabel>{" "}
         <RelativeTimeStamp dateNumber={toggleDetails.creationDate} />
       </p>
       <p>
