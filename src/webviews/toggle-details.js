@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import TimeAgo from "javascript-time-ago";
-import en from "javascript-time-ago/locale/en";
+
 import { LightBadge, SwitchBadge } from "./badge.styles";
 import { CopyText } from "./copy-button";
+import { RelativeTimeStamp } from "./relative-time-stamp";
 
 const EnvironmentToggleLayout = styled.div`
   display: grid;
@@ -14,7 +14,7 @@ const EnvironmentToggleLayout = styled.div`
 
 const VariationToggleLayout = styled.div`
   display: grid;
-  grid-template-columns: 20% 35% 45%;
+  grid-template-columns: 20% 20% 60%;
   width: 100%;
   margin: 10px 0;
 `;
@@ -31,19 +31,12 @@ const ThemeLabel = styled.label`
 `;
 
 export function ToggleDetails({ toggleDetails }) {
-  TimeAgo.addLocale(en);
-  const timeAgo = new TimeAgo("en-GB");
   return (
     <div>
       <h2>{toggleDetails.name}</h2>
       <p>
         <ThemeLabel>Created Date: </ThemeLabel>{" "}
-        <time
-          title={new Date(toggleDetails.creationDate).toString()}
-          datetime={new Date(toggleDetails.creationDate).toISOString()}
-        >
-          {timeAgo.format(new Date(toggleDetails.creationDate))}
-        </time>
+        <RelativeTimeStamp dateNumber={toggleDetails.creationDate} />
       </p>
       <p>
         <ThemeLabel>Description:</ThemeLabel> {toggleDetails.description}
@@ -55,16 +48,18 @@ export function ToggleDetails({ toggleDetails }) {
         <CopyText textToCopy={toggleDetails.key} successText="Copied">
           Copy key
         </CopyText>
-        {"   "}
-        <label>kind:</label> <LightBadge>{toggleDetails.kind}</LightBadge>
+      </p>
+      <p>
+        <ThemeLabel>Kind:</ThemeLabel>{" "}
+        <LightBadge>{toggleDetails.kind}</LightBadge>
       </p>
       <div>
         <h3>Variations</h3>
         {toggleDetails.variations.map((variation, i) => (
           <VariationToggleLayout>
             <ThemeLabel>Variation {i + 1}:</ThemeLabel>{" "}
-            <span>{variation.name}</span>
             <LightBadge>{String(variation.value)}</LightBadge>
+            <span>{variation.name}</span>
           </VariationToggleLayout>
         ))}
       </div>
