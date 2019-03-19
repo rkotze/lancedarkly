@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import TimeAgo from "javascript-time-ago";
+import en from "javascript-time-ago/locale/en";
 import { LightBadge, SwitchBadge } from "./badge.styles";
 import { CopyText } from "./copy-button";
 
@@ -19,6 +21,7 @@ const VariationToggleLayout = styled.div`
 
 const ThemeLabel = styled.label`
   padding-left: 8px;
+  font-style: italic;
   body.vscode-dark & {
     color: #cdcdcd;
   }
@@ -28,12 +31,19 @@ const ThemeLabel = styled.label`
 `;
 
 export function ToggleDetails({ toggleDetails }) {
+  TimeAgo.addLocale(en);
+  const timeAgo = new TimeAgo("en-GB");
   return (
     <div>
       <h2>{toggleDetails.name}</h2>
       <p>
         <ThemeLabel>Created Date: </ThemeLabel>{" "}
-        {new Date(toggleDetails.creationDate).toString()}
+        <time
+          title={new Date(toggleDetails.creationDate).toString()}
+          datetime={new Date(toggleDetails.creationDate).toISOString()}
+        >
+          {timeAgo.format(new Date(toggleDetails.creationDate))}
+        </time>
       </p>
       <p>
         <ThemeLabel>Description:</ThemeLabel> {toggleDetails.description}
