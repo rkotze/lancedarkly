@@ -1,7 +1,7 @@
 {
-  "name": "LanceDarkly",
+  "name": "lancedarkly",
   "displayName": "LanceDarkly - view LaunchDarkly toggles",
-  "description": "View LaunchDarkly toggle details",
+  "description": "Convenient overview of LaunchDarkly toggles for all environments",
   "version": "0.0.1",
   "publisher": "RichardKotze",
   "engines": {

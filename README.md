@@ -1,7 +1,19 @@
 # LanceDarkly
 
+> Beta release
+
 1. [Get started](#get-started)
-1. [Contributing](#contributing)
+1. [Commands](#commands)
+1. [Features](#features)
+1. [Contributing](https://github.com/rkotze/lancedarkly/blob/master/CONTRIBUTING.md)
+
+### Problem
+
+Switching between VS Code, LaunchDarkly web app and other toggle integrations is inconvenient during development. The LaunchDarkly app does not provide a view of toggle state (on|off) for **all** environments.
+
+### Solution
+
+A VS Code extension to query LaunchDarkly API to list all toggles and make it easy to read toggle data.
 
 ## Get started
 
@@ -15,22 +27,18 @@ Update you're setting in VS Code under `LanceDarkly`. See image below:
 
 ![LanceDarkly Settings](https://user-images.githubusercontent.com/10452163/53906270-64857d80-4042-11e9-9fdd-7b58e03f8cc1.png)
 
-## Problem
+### Commands
 
-Switching between VS Code, LaunchDarkly (LD) web app and other integrations is inconvenient. Would be great if there was an extension to find a toggle and related information.
+- `ctrl+shift+p` -> `LanceDarkly: List all toggles`
+  Opens a new tab listing all toggles. Selecting a toggle shows you details about it.
 
-## Solution
+### Features
 
-Create a VS extension to query LD API to list all toggles and make it easy to ready toggle data.
-
-## Contributing
-
-1. Create an issue
-1. Fork -> branch -> PR
-
-### Running the project
-
-- `npm i`
-- `npm run build` watches files changed for webviews and rebuilds the React app
-- **F5** to run in VS code
-- `npm test`
+- List all toggles in a project with a total count
+- Quick overview of toggle details:
+  - Title, created date, description, key and kind
+  - Variations
+  - Environments and if toggle is **on** or **off**
+- Link to toggle in LaunchDarkly
+- Copy key to clipboard
+- Search for toggles by **name** and **description**
