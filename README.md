@@ -35,10 +35,11 @@ Update you're setting in VS Code under `LanceDarkly`. See image below:
 ### Features
 
 - List all toggles in a project with a total count
+- Search for toggles by **name** and **description**
 - Quick overview of toggle details:
   - Title, created date, description, key and kind
-  - Variations
-  - Environments and if toggle is **on** or **off**
-- Link to toggle in LaunchDarkly
+  - Variations: value and name
+  - Environments: show **on** or **off** state
+- Open toggle in LaunchDarkly
 - Copy key to clipboard
-- Search for toggles by **name** and **description**
+- Settings for **defaultProject** and **accessToken**
