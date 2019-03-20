@@ -1,6 +1,8 @@
 const path = require("path");
 const vscode = require("vscode");
 
+const packageJson = require("../../package.json");
+
 const { messageListener } = require("../message-delegation/");
 
 function toggleDetails({ context }) {
@@ -46,7 +48,9 @@ function getWebviewContent(context) {
 </head>
 <body>
 <div id="lanceDarklyApp"></div>
-<script>var MEDIA_URI = '${mediaUri}'</script>
+<script>
+var MEDIA_URI = '${mediaUri}';
+var VERSION = '${packageJson.version}';</script>
 <script src="${scriptUri}"></script>
 </body>
 </html>`;

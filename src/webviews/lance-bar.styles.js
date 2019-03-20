@@ -13,3 +13,8 @@ export const Title = styled.h2`
   font-weight: normal;
   color: ${colours.blue};
 `;
+export const SupVersion = styled.sup`
+  color: ${colours.green};
+  font-size: 10px;
+  font-family: "Courier New", Courier, monospace;
+`;

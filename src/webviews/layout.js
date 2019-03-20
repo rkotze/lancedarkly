@@ -1,5 +1,5 @@
 import React from "react";
-import { LanceBar, Logo, Title } from "./lance-bar.styles";
+import { LanceBar, Logo, Title, SupVersion } from "./lance-bar.styles";
 
 export function Layout({ children }) {
   return (
@@ -7,7 +7,9 @@ export function Layout({ children }) {
       <LanceBar>
         <Logo src={`${MEDIA_URI}/lancedarkly-logo.svg`} />
 
-        <Title>LanceDarkly</Title>
+        <Title>
+          LanceDarkly <SupVersion>v{VERSION}</SupVersion>
+        </Title>
       </LanceBar>
       {children}
     </div>
