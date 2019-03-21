@@ -20,6 +20,10 @@ function toggleDetails({ context }) {
         }
       );
 
+      panel.iconPath = vscode.Uri.file(
+        context.asAbsolutePath("resources/lancedarkly-logo.svg")
+      );
+
       panel.webview.html = getWebviewContent(context);
       messageListener(panel.webview, context);
     })
