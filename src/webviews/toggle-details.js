@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { LightBadge, SwitchBadge } from "./badge.styles";
 import { CopyText } from "./copy-button";
 import { RelativeTimeStamp } from "./relative-time-stamp";
+import { Maintainer } from "./maintainer";
 
 const EnvironmentToggleLayout = styled.div`
   display: grid;
@@ -19,7 +20,7 @@ const VariationToggleLayout = styled.div`
   margin: 10px 0;
 `;
 
-const ThemeLabel = styled.label`
+export const ThemeLabel = styled.label`
   padding-left: 8px;
   font-style: italic;
   body.vscode-dark & {
@@ -41,6 +42,9 @@ export function ToggleDetails({ toggleDetails }) {
       <p>
         <ThemeLabel>Description:</ThemeLabel> {toggleDetails.description}
       </p>
+      {toggleDetails._maintainer && (
+        <Maintainer maintainer={toggleDetails._maintainer} />
+      )}
       <p>
         <ThemeLabel>Key:</ThemeLabel>{" "}
         <LightBadge>{toggleDetails.key}</LightBadge>
