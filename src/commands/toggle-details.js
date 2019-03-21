@@ -32,6 +32,9 @@ function toggleDetails({ context }) {
 exports.toggleDetails = toggleDetails;
 
 function getWebviewContent(context) {
+  const settings = vscode.workspace.getConfiguration("LanceDarkly");
+  const baseURI = settings.get("baseURI");
+
   const scriptPathOnDisk = vscode.Uri.file(
     path.join(context.extensionPath, "dist", "bundle.js")
   );
@@ -54,7 +57,8 @@ function getWebviewContent(context) {
 <div id="lanceDarklyApp"></div>
 <script>
 var MEDIA_URI = '${mediaUri}';
-var VERSION = '${packageJson.version}';</script>
+var VERSION = '${packageJson.version}';
+var BASE_URI = '${baseURI}';</script>
 <script src="${scriptUri}"></script>
 </body>
 </html>`;

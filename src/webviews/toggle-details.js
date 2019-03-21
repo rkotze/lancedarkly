@@ -76,10 +76,7 @@ export function ToggleDetails({ toggleDetails }) {
                 </SwitchBadge>{" "}
               </div>
               <div>
-                <a
-                  href={`https://app.launchdarkly.com${envDetails._site.href}`}
-                  target="_blank"
-                >
+                <a href={`${BASE_URI}${envDetails._site.href}`} target="_blank">
                   Open in LaunchDarkly
                 </a>
               </div>
