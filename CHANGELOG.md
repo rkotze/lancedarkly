@@ -2,6 +2,12 @@
 
 Follows [Semantic Versioning](https://semver.org/).
 
+## [0.2.1] -- 2019-03-21
+
+### Fixed
+
+- Command `lancedarkly.listAllToggles` not found.
+
 ## [0.2.0] -- 2019-03-21
 
 ### Added
