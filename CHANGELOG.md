@@ -2,6 +2,15 @@
 
 Follows [Semantic Versioning](https://semver.org/).
 
+## [0.2.0] -- 2019-03-21
+
+### Added
+
+- Show maintainer info for toggle
+- Added logo to tab title
+- Reduce package size of extension by excluding files not being bundled
+- Updates to layout: filter added to left column and left column made wider
+
 ## [0.1.0] -- 2019-03-19
 
 ### Added

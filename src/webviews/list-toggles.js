@@ -54,10 +54,9 @@ export function ListToggles() {
 
   return (
     <div>
-      <FilterToggles onFilterToggles={setToggles} />
-
       <ToggleViews>
         <TogglesPanel>
+          <FilterToggles onFilterToggles={setToggles} />
           <Right>
             Total: <GreenBadge>{toggles.length}</GreenBadge>
           </Right>

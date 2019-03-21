@@ -4,11 +4,11 @@ import { colours } from "./colour-constants.styles";
 export const ToggleViews = styled.div`
   position: absolute;
   display: grid;
-  grid-template-columns: 25% 74%;
+  grid-template-columns: 30% 69%;
   grid-template-rows: auto;
   grid-column-gap: 1%;
-  width: 95%;
-  height: 85%;
+  width: calc(100% - 40px);
+  height: calc(100% - 70px);
 `;
 export const TogglesPanel = styled.div`
   max-height: 100%;

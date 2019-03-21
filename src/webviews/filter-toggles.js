@@ -9,7 +9,7 @@ const InputField = styled.input`
   border: 1px solid #29b28d;
   border-radius: 4px;
   padding: 6px;
-  width: 400px;
+  width: calc(100% - 14px);
   &:focus {
     outline: none;
   }
