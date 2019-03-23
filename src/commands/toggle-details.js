@@ -6,10 +6,11 @@ const packageJson = require("../../package.json");
 const { messageListener } = require("../message-delegation/");
 
 function toggleDetails({ context }) {
-  const settings = vscode.workspace.getConfiguration("LanceDarkly");
-  const defaultProject = settings.get("defaultProject");
   context.subscriptions.push(
     vscode.commands.registerCommand("lancedarkly.listAllToggles", () => {
+      const settings = vscode.workspace.getConfiguration("LanceDarkly");
+      const defaultProject = settings.get("defaultProject");
+
       const panel = vscode.window.createWebviewPanel(
         "listAllToggles",
         `LanceDarkly: ${defaultProject}`,
@@ -24,15 +25,14 @@ function toggleDetails({ context }) {
         context.asAbsolutePath("resources/lancedarkly-logo.svg")
       );
 
-      panel.webview.html = getWebviewContent(context);
+      panel.webview.html = getWebviewContent(context, settings);
       messageListener(panel.webview, context);
     })
   );
 }
 exports.toggleDetails = toggleDetails;
 
-function getWebviewContent(context) {
-  const settings = vscode.workspace.getConfiguration("LanceDarkly");
+function getWebviewContent(context, settings) {
   const baseURI = settings.get("baseURI");
 
   const scriptPathOnDisk = vscode.Uri.file(
