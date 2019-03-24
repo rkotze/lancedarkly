@@ -1,6 +1,6 @@
 const { fetchTogglesAction } = require("../vscode/fetch-toggles");
 const { copyLdKeyAction } = require("../vscode/copy-ld-key-clipboard");
-
+const { resolvePluginsAction } = require("../vscode/load-plugins");
 // example function
 function log(arg) {
   console.log("log: ", arg);
@@ -21,7 +21,8 @@ exports.messageListener = function messageListener(webview, context) {
     delegator({ webview, context }, [
       { name: "log", fn: log },
       fetchTogglesAction,
-      copyLdKeyAction
+      copyLdKeyAction,
+      resolvePluginsAction
     ]),
     undefined,
     context.subscriptions

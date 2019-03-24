@@ -5,6 +5,7 @@ import { LightBadge, SwitchBadge } from "./badge.styles";
 import { CopyText } from "./copy-button";
 import { RelativeTimeStamp } from "./relative-time-stamp";
 import { Maintainer } from "./maintainer";
+import { ListPlugins } from "./list-plugins";
 
 const EnvironmentToggleLayout = styled.div`
   display: grid;
@@ -88,6 +89,7 @@ export function ToggleDetails({ toggleDetails }) {
           );
         })}
       </div>
+      <ListPlugins ldKey={toggleDetails.key} />
     </div>
   );
 }

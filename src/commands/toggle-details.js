@@ -1,5 +1,6 @@
 const path = require("path");
 const vscode = require("vscode");
+const { loadPlugins } = require("../vscode/load-plugins");
 
 const packageJson = require("../../package.json");
 
@@ -10,6 +11,7 @@ function toggleDetails({ context }) {
     vscode.commands.registerCommand("lancedarkly.listAllToggles", () => {
       const settings = vscode.workspace.getConfiguration("LanceDarkly");
       const defaultProject = settings.get("defaultProject");
+      loadPlugins();
 
       const panel = vscode.window.createWebviewPanel(
         "listAllToggles",
@@ -30,6 +32,7 @@ function toggleDetails({ context }) {
     })
   );
 }
+
 exports.toggleDetails = toggleDetails;
 
 function getWebviewContent(context, settings) {
