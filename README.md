@@ -43,3 +43,37 @@ Update your setting in VS Code under `LanceDarkly`. See image below:
 - Open toggle in LaunchDarkly
 - Copy key to clipboard
 - Settings for **defaultProject** and **accessToken**
+
+### Plugins
+
+Extend the toggle details view with third party data.
+
+Create a folder in your home directory called `lancedarkly` with a file called `plugins.js`;
+
+The plugin function is called when the `LanceDarkly: List all toggles` command is called.
+
+Plugin API:
+
+Only change the `title` and `fields` properties. Fields must be a 2D array.
+
+The `detailFields` will pass through the toggle key.
+
+```javascript
+async function plugins() {
+  return [
+    {
+      detailFields(key) {
+        return {
+          title: "Title",
+          fields: [
+            ["Production", "key", "guid", "random"],
+            ["Integration", "key", "guid", "random"]
+          ]
+        };
+      }
+    }
+  ];
+}
+
+exports.plugins = plugins;
+```
