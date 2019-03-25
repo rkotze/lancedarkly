@@ -1,36 +1,16 @@
 import React from "react";
-import styled from "styled-components";
 
-import { LightBadge, SwitchBadge } from "./badge.styles";
 import { CopyText } from "./copy-button";
 import { RelativeTimeStamp } from "./relative-time-stamp";
 import { Maintainer } from "./maintainer";
 import { ListPlugins } from "./list-plugins";
 
-const EnvironmentToggleLayout = styled.div`
-  display: grid;
-  grid-template-columns: 25% 15% 60%;
-  width: 100%;
-  margin: 10px 0;
-`;
-
-const VariationToggleLayout = styled.div`
-  display: grid;
-  grid-template-columns: 20% 20% 60%;
-  width: 100%;
-  margin: 10px 0;
-`;
-
-export const ThemeLabel = styled.label`
-  padding-left: 8px;
-  font-style: italic;
-  body.vscode-dark & {
-    color: #cdcdcd;
-  }
-  body.vscode-light & {
-    color: #232323;
-  }
-`;
+import { LightBadge, SwitchBadge } from "./badge.styles";
+import {
+  ThemeLabel,
+  VariationToggleLayout,
+  EnvironmentToggleLayout
+} from "./toggle-data-layout.styles";
 
 export function ToggleDetails({ toggleDetails }) {
   return (

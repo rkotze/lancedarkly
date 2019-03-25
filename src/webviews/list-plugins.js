@@ -1,6 +1,8 @@
 import React, { useEffect, useState, useContext } from "react";
 import { VsCodeContext } from "./vs-code-context/index";
 
+import { ThemeLabel, PluginLayout } from "./toggle-data-layout.styles";
+
 export function ListPlugins({ ldKey }) {
   const { vscodeSubscribe, vscode } = useContext(VsCodeContext);
   const [fields, setFields] = useState([]);
@@ -26,11 +28,12 @@ export function ListPlugins({ ldKey }) {
             <div>
               <h3>{title}</h3>
               {fields.map(list => (
-                <div>
-                  {list.map(field => (
-                    <span>{field}</span>
-                  ))}
-                </div>
+                <PluginLayout>
+                  {list.slice(0,4).map((field, i) => {
+                    if (i === 0) return <ThemeLabel>{field}</ThemeLabel>;
+                    return <span>{field}</span>;
+                  })}
+                </PluginLayout>
               ))}
             </div>
           ))}
