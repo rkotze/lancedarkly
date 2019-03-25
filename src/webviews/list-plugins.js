@@ -12,12 +12,10 @@ export function ListPlugins({ ldKey }) {
       }
     });
 
-    if (!fields.length) {
-      vscode.postMessage({
-        name: "resolvePlugins",
-        args: [ldKey, "detailFields"]
-      });
-    }
+    vscode.postMessage({
+      name: "resolvePlugins",
+      args: [ldKey, "detailFields"]
+    });
   });
 
   if (fields.length) {

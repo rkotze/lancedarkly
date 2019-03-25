@@ -6,6 +6,10 @@ let pluginList = [];
 async function loadPlugins() {
   try {
     const pluginPath = path.join(os.homedir(), "lancedarkly", "plugins.js");
+    // reload plugins
+    if (require.cache[require.resolve(pluginPath)])
+      delete require.cache[require.resolve(pluginPath)];
+
     if (fs.existsSync(pluginPath)) {
       const { plugins } = require(pluginPath);
 
