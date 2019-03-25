@@ -2,6 +2,16 @@
 
 Follows [Semantic Versioning](https://semver.org/).
 
+## [0.3.0] -- 2019-03-25
+
+### Added
+
+- New plugin system for third party integrations
+
+### Fixed
+
+- Title show `null` in tab for first time users (see issue [#1](https://github.com/rkotze/lancedarkly/issues/1))
+
 ## [0.2.1] -- 2019-03-21
 
 ### Fixed
