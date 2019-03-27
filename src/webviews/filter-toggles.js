@@ -2,16 +2,18 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import { VsCodeContext } from "./vs-code-context/index";
+import { colours } from "./colour-constants.styles";
 
 const InputField = styled.input`
   background: inherit;
   color: inherit;
-  border: 1px solid #29b28d;
+  border: 1px solid ${colours.green};
   border-radius: 4px;
   padding: 6px;
   width: calc(100% - 14px);
   &:focus {
     outline: none;
+    box-shadow: 0px 0px 6px ${colours.green};
   }
   margin: 0;
 `;
@@ -21,6 +23,11 @@ const FilterForm = styled.form`
 `;
 
 export class FilterToggles extends Component {
+  constructor(props) {
+    super(props);
+    this.filterInput = React.createRef();
+  }
+
   filterToggles = filterText => {
     const { vscode } = this.context;
 
@@ -40,6 +47,10 @@ export class FilterToggles extends Component {
     onFilterToggles(this.filterToggles(e.target.value));
   };
 
+  componentDidMount() {
+    this.filterInput.current.focus();
+  }
+
   render() {
     return (
       <FilterForm>
@@ -47,6 +58,7 @@ export class FilterToggles extends Component {
           name="filter"
           onChange={this.onChangeHander}
           placeholder="Search toggles"
+          ref={this.filterInput}
         />
       </FilterForm>
     );

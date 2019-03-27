@@ -13,7 +13,7 @@ export const ToggleViews = styled.div`
 export const TogglesPanel = styled.div`
   max-height: 100%;
   overflow-y: auto;
-  padding-right: 10px;
+  padding: 0 6px;
 `;
 export const NoBullets = styled.ul`
   list-style: none;
@@ -35,7 +35,8 @@ export const ButtonLink = styled.a`
   &:focus {
     outline: none;
   }
-  &:hover {
+  &:hover,
+  &:focus {
     color: #ffffff;
     border: 1px solid ${colours.green};
     background-color: ${colours.green};
