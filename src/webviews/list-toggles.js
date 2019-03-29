@@ -19,7 +19,7 @@ const FETCH_STATUS = {
   DONE: "done"
 };
 
-export function ListToggles() {
+export function ListToggles({ children }) {
   const { vscodeSubscribe, vscode } = useContext(VsCodeContext);
   const [toggles, setToggles] = useState([]);
   const [toggleDetails, setToggleDetails] = useState(null);
@@ -79,6 +79,7 @@ export function ListToggles() {
         </TogglesPanel>
         <div>
           {toggleDetails && <ToggleDetails toggleDetails={toggleDetails} />}
+          {children}
         </div>
       </ToggleViews>
     </div>
