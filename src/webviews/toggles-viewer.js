@@ -4,6 +4,7 @@ import { LanceBar, Logo, Title, SupVersion } from "./lance-bar.styles";
 import { ListToggles } from "./list-toggles";
 import { Stats } from "./stats";
 import { ButtonLink } from "./stats/stats.styles";
+import { ToggleDetails } from "./toggle-details";
 
 export class TogglesViewer extends Component {
   constructor(props) {
@@ -13,10 +14,16 @@ export class TogglesViewer extends Component {
     };
   }
 
-  onToggleStatus = e => {
+  onToggleStats = e => {
     e.preventDefault();
     this.setState({
       stats: !this.state.stats
+    });
+  };
+
+  handleToggleClicked = () => {
+    this.setState({
+      stats: false
     });
   };
   render() {
@@ -30,11 +37,17 @@ export class TogglesViewer extends Component {
             LanceDarkly <SupVersion>v{VERSION}</SupVersion>
           </Title>
 
-          <ButtonLink href="#" onClick={this.onToggleStatus}>
+          <ButtonLink href="#" onClick={this.onToggleStats}>
             Stats
           </ButtonLink>
         </LanceBar>
-        <ListToggles>{stats && <Stats />}</ListToggles>
+        <ListToggles onToggleClicked={this.handleToggleClicked}>
+          {({ toggleDetails }) => {
+            if (stats) return <Stats />;
+            if (toggleDetails)
+              return <ToggleDetails toggleDetails={toggleDetails} />;
+          }}
+        </ListToggles>
       </div>
     );
   }

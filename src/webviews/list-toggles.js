@@ -19,7 +19,7 @@ const FETCH_STATUS = {
   DONE: "done"
 };
 
-export function ListToggles({ children }) {
+export function ListToggles({ children, onToggleClicked }) {
   const { vscodeSubscribe, vscode } = useContext(VsCodeContext);
   const [toggles, setToggles] = useState([]);
   const [toggleDetails, setToggleDetails] = useState(null);
@@ -29,6 +29,7 @@ export function ListToggles({ children }) {
     e.preventDefault();
     const toggleKey = e.target.getAttribute("data-toggle-key");
     const toggleDetails = toggles.find(toggle => toggle.key === toggleKey);
+    onToggleClicked(toggleKey);
     setToggleDetails(toggleDetails);
   }
 
@@ -77,10 +78,7 @@ export function ListToggles({ children }) {
             ))}
           </NoBullets>
         </TogglesPanel>
-        <div>
-          {toggleDetails && <ToggleDetails toggleDetails={toggleDetails} />}
-          {children}
-        </div>
+        <div>{children({ toggleDetails })}</div>
       </ToggleViews>
     </div>
   );
