@@ -7,7 +7,10 @@ export function TotalsByAge() {
   const { vscodeSubscribe, vscode } = useContext(VsCodeContext);
 
   const appState = vscode.getState() || {};
-  const [ageGroups, setAgeGroups] = useState(appState.toggles || []);
+  let [ageGroups, setAgeGroups] = useState(
+    groupByAge(appState.toggles || [], Date.now())
+  );
+
   if (!appState.toggles) {
     vscodeSubscribe(event => {
       const { fetchToggles } = event.data;

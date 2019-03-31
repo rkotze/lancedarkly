@@ -1,24 +1,20 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import { NumberBox, Number, LabelInfo } from "./stats.styles";
 import { VsCodeContext } from "../vs-code-context/index";
 
 export function Total() {
   const { vscodeSubscribe, vscode } = useContext(VsCodeContext);
-  const [toggles, setToggles] = useState([]);
+  const appState = vscode.getState() || {};
+  const [toggles, setToggles] = useState(appState.toggles || []);
 
-  useEffect(() => {
-    const appState = vscode.getState();
-    if (!appState || !appState.toggles) {
-      vscodeSubscribe(event => {
-        const { fetchToggles } = event.data;
-        if (fetchToggles) {
-          setToggles(fetchToggles);
-        }
-      });
-    } else {
-      setToggles(appState.toggles);
-    }
-  });
+  if (!appState.toggles) {
+    vscodeSubscribe(event => {
+      const { fetchToggles } = event.data;
+      if (fetchToggles) {
+        setToggles(fetchToggles);
+      }
+    });
+  }
 
   return (
     <NumberBox>
