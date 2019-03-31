@@ -2,11 +2,12 @@
 
 Follows [Semantic Versioning](https://semver.org/).
 
-## [0.3.0] -- 2019-03-25
+## [0.3.0] -- 2019-04-01
 
 ### Added
 
 - New plugin system for third party integrations
+- Show basic stats of all toggles for a project
 
 ### Fixed
 
