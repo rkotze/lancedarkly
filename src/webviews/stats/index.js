@@ -1,11 +1,12 @@
 import React from "react";
-import { FlexList } from "./stats.styles";
 import { Total } from "./total";
+import { TotalsByAge } from "./totals-by-age";
 
 export function Stats() {
   return (
-    <FlexList>
+    <div>
       <Total />
-    </FlexList>
+      <TotalsByAge />
+    </div>
   );
 }

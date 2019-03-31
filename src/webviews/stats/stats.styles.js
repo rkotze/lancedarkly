@@ -22,16 +22,14 @@ export const ButtonLink = styled.a`
   }
 `;
 
-export const FlexList = styled.div`
-  display: flex;
-`;
-
 export const NumberBox = styled.div`
+  display: inline-block;
   border-radius: 4px;
   background-color: ${colours.green};
-  color: #ffffff;
+  color: #323232;
   padding: 10px 20px;
   margin-right: 10px;
+  margin-bottom: 10px;
   text-align: center;
 `;
 
