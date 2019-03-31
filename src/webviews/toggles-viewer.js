@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Layout } from "./layout";
 import { LanceBar, Logo, Title, SupVersion } from "./lance-bar.styles";
 import { ListToggles } from "./list-toggles";
 import { Stats } from "./stats";
