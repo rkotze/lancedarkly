@@ -7,6 +7,8 @@ const AGE_CONST = {
   DAY: "day"
 };
 
+exports.AGE_CONST = AGE_CONST;
+
 function overAge(current, previous) {
   const msPerDay = 1000 * 60 * 60 * 24;
   const msPerWeek = msPerDay * 7;
@@ -32,5 +34,14 @@ function overAge(current, previous) {
   return AGE_CONST.DAY;
 }
 
-exports.overAge = overAge;
-exports.AGE_CONST = AGE_CONST;
+function groupByAge(toggles, current) {
+  return toggles.reduce((acc, cur) => {
+    const ageCategory = overAge(current, cur.creationDate);
+    if (Array.isArray(acc[ageCategory])) acc[ageCategory].push(cur);
+    else acc[ageCategory] = [cur];
+
+    return acc;
+  }, {});
+}
+
+exports.groupByAge = groupByAge;
