@@ -21,3 +21,24 @@ export const ButtonLink = styled.a`
     background-color: ${colours.green};
   }
 `;
+
+export const FlexList = styled.div`
+  display: flex;
+`;
+
+export const NumberBox = styled.div`
+  border-radius: 4px;
+  background-color: ${colours.green};
+  color: #ffffff;
+  padding: 10px 20px;
+  margin-right: 10px;
+  text-align: center;
+`;
+
+export const Number = styled.div`
+  font-size: 3em;
+`;
+
+export const LabelInfo = styled.label`
+  font-size: 1em;
+`;

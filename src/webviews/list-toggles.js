@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 
 import { VsCodeContext } from "./vs-code-context/index";
-import { ToggleDetails } from "./toggle-details";
 import { FilterToggles } from "./filter-toggles";
 import { GreenBadge } from "./badge.styles";
 import {
