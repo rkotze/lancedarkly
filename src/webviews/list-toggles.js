@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 
 import { VsCodeContext } from "./vs-code-context/index";
 import { FilterToggles } from "./filter-toggles";
@@ -20,7 +20,8 @@ const FETCH_STATUS = {
 
 export function ListToggles({ children, onToggleClicked }) {
   const { vscodeSubscribe, vscode } = useContext(VsCodeContext);
-  const [toggles, setToggles] = useState([]);
+  const appState = vscode.getState() || {};
+  const [toggles, setToggles] = useState(appState.toggles || []);
   const [toggleDetails, setToggleDetails] = useState(null);
   const [fetchStatus, setFetchStatus] = useState(FETCH_STATUS.FETCHING);
 
@@ -32,25 +33,22 @@ export function ListToggles({ children, onToggleClicked }) {
     setToggleDetails(toggleDetails);
   }
 
-  useEffect(() => {
-    const appState = vscode.getState();
-    vscodeSubscribe(event => {
-      const { fetchToggles } = event.data;
-      if (fetchToggles) {
-        vscode.setState({
-          toggles: fetchToggles
-        });
-        setToggles(fetchToggles);
-        setFetchStatus(FETCH_STATUS.DONE);
-      }
-    });
-
-    if (!appState || !appState.toggles) {
-      vscode.postMessage({
-        name: "fetchToggles"
+  vscodeSubscribe(event => {
+    const { fetchToggles } = event.data;
+    if (fetchToggles) {
+      vscode.setState({
+        toggles: fetchToggles
       });
+      setToggles(fetchToggles);
+      setFetchStatus(FETCH_STATUS.DONE);
     }
   });
+
+  if (!appState.toggles) {
+    vscode.postMessage({
+      name: "fetchToggles"
+    });
+  }
 
   return (
     <div>
