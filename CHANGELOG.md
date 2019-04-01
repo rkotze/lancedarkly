@@ -2,6 +2,12 @@
 
 Follows [Semantic Versioning](https://semver.org/).
 
+## [0.3.1] -- 2019-04-01
+
+### Fixed
+
+- Performance bug loading plugins - freezes UI.
+
 ## [0.3.0] -- 2019-04-01
 
 ### Added
