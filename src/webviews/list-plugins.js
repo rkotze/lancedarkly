@@ -28,13 +28,14 @@ export function ListPlugins({ ldKey }) {
       return (
         <div>
           {fields.map(({ title, fields }) => (
-            <div>
+            <div key={title}>
               <h3>{title}</h3>
               {fields.map(list => (
-                <PluginLayout>
+                <PluginLayout key={list[0].field}>
                   {list.slice(0, 4).map((field, i) => {
-                    if (i === 0) return <ThemeLabel>{field}</ThemeLabel>;
-                    return <span>{field}</span>;
+                    if (i === 0)
+                      return <ThemeLabel key={i}>{field}</ThemeLabel>;
+                    return <span key={i}>{field}</span>;
                   })}
                 </PluginLayout>
               ))}
