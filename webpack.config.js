@@ -20,10 +20,6 @@ const webClient = {
         }
       }
     ]
-  },
-  watch: true,
-  watchOptions: {
-    ignored: /node_modules/
   }
 };
 
@@ -38,7 +34,8 @@ const nodeJs = {
   },
   devtool: "source-map",
   externals: {
-    vscode: "commonjs vscode"
+    vscode: "commonjs vscode",
+    "node-fetch": "commonjs node-fetch"
   },
   resolve: {
     extensions: [".js"]
@@ -53,10 +50,6 @@ const nodeJs = {
         exclude: /node_modules/
       }
     ]
-  },
-  watch: true,
-  watchOptions: {
-    ignored: /node_modules/
   }
 };
 

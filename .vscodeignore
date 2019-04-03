@@ -9,3 +9,5 @@ src/
 azure-pipelines.yml
 webpack.config.js
 .gitignore
+
+!node_modules/node-fetch

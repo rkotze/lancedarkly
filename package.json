@@ -73,11 +73,11 @@
     }
   },
   "scripts": {
-    "vscode:prepublish": "webpack --mode production",
+    "vscode:prepublish": "webpack --config webpack.config.js -p",
     "postinstall": "node ./node_modules/vscode/bin/install",
     "test": "jest",
     "ui-test": "node ./node_modules/vscode/bin/test",
-    "build": "webpack --config webpack.config.js --mode none"
+    "build": "webpack --config webpack.config.js --mode none -w"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
