@@ -20,6 +20,15 @@ const webClient = {
         }
       }
     ]
+  },
+  stats: {
+    all: false,
+    assets: true,
+    builtAt: true,
+    env: true,
+    errors: true,
+    timings: true,
+    warnings: true
   }
 };
 
@@ -50,6 +59,15 @@ const nodeJs = {
         exclude: /node_modules/
       }
     ]
+  },
+  stats: {
+    all: false,
+    assets: true,
+    builtAt: true,
+    env: true,
+    errors: true,
+    timings: true,
+    warnings: true
   }
 };
 
