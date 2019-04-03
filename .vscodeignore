@@ -2,7 +2,10 @@ __mocks__/**
 .github/**
 .vscode/**
 test/**
+node_modules/**
+src/
+
 **/*.spec.js
 azure-pipelines.yml
 webpack.config.js
-src/webviews
+.gitignore

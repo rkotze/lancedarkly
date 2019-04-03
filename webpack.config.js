@@ -38,8 +38,7 @@ const nodeJs = {
   },
   devtool: "source-map",
   externals: {
-    vscode: "vscode",
-    "node-fetch": "node-fetch"
+    vscode: "commonjs vscode"
   },
   resolve: {
     extensions: [".js"]
