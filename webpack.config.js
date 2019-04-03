@@ -45,6 +45,9 @@ const nodeJs = {
     extensions: [".js"]
   },
   module: {
+    noParse: content => {
+      return content.includes("load-plugins");
+    },
     rules: [
       {
         test: /\.js$/,
