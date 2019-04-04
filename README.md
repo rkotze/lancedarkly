@@ -6,6 +6,7 @@
 1. [Commands](#commands)
 1. [Features](#features)
 1. [Contributing](https://github.com/rkotze/lancedarkly/blob/master/CONTRIBUTING.md)
+1. [Plugins API](#plugins)
 
 ### Problem
 
