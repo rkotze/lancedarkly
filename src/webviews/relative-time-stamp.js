@@ -8,7 +8,7 @@ const timeAgo = new TimeAgo("en-GB");
 export function RelativeTimeStamp({ dateNumber }) {
   const date = new Date(dateNumber);
   return (
-    <time title={date.toString()} datetime={date.toISOString()}>
+    <time title={date.toString()} dateTime={date.toISOString()}>
       {timeAgo.format(date)}
     </time>
   );

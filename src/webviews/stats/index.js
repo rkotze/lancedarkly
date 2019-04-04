@@ -1,13 +1,14 @@
 import React from "react";
 import { Total } from "./total";
 import { TotalsByAge } from "./totals-by-age";
+import { FirstHeading, SecondHeading } from "../core.styles";
 
 export function Stats() {
   return (
     <div>
-      <h2>Dashboard</h2>
+      <FirstHeading>Dashboard</FirstHeading>
       <Total />
-      <h3>Created</h3>
+      <SecondHeading>Created</SecondHeading>
       <TotalsByAge />
     </div>
   );

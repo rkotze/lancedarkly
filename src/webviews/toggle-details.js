@@ -41,7 +41,7 @@ export function ToggleDetails({ toggleDetails }) {
       <div>
         <h3>Variations</h3>
         {toggleDetails.variations.map((variation, i) => (
-          <VariationToggleLayout>
+          <VariationToggleLayout key={i}>
             <ThemeLabel>Variation {i + 1}:</ThemeLabel>{" "}
             <LightBadge>{String(variation.value)}</LightBadge>
             <span>{variation.name}</span>
@@ -50,10 +50,10 @@ export function ToggleDetails({ toggleDetails }) {
       </div>
       <div>
         <h3>Environments</h3>
-        {Object.keys(toggleDetails.environments).map(prop => {
+        {Object.keys(toggleDetails.environments).map((prop, i) => {
           const envDetails = toggleDetails.environments[prop];
           return (
-            <EnvironmentToggleLayout>
+            <EnvironmentToggleLayout key={i}>
               <ThemeLabel>{envDetails._environmentName}:</ThemeLabel>
               <div>
                 <SwitchBadge toggleState={envDetails.on}>
