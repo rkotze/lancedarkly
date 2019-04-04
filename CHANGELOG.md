@@ -2,6 +2,12 @@
 
 Follows [Semantic Versioning](https://semver.org/).
 
+## [0.4.0] -- 2019-04-04
+
+### Added
+
+- Introduced build tools to optimize the installed package from 3.2Mb to less than 600kb
+
 ## [0.3.1] -- 2019-04-01
 
 ### Fixed
