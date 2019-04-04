@@ -37,7 +37,7 @@ export class TogglesViewer extends Component {
           </Title>
 
           <ButtonLink href="#" onClick={this.onToggleStats}>
-            Stats
+            Dashboard
           </ButtonLink>
         </LanceBar>
         <ListToggles onToggleClicked={this.handleToggleClicked}>
