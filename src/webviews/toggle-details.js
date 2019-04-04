@@ -61,6 +61,20 @@ export function ToggleDetails({ toggleDetails }) {
                 </SwitchBadge>{" "}
               </div>
               <div>
+                {!envDetails.fallthrough.rollout && (
+                  <span>
+                    Default: 100%{" "}
+                    <LightBadge>
+                      {String(
+                        toggleDetails.variations[
+                          envDetails.fallthrough.variation
+                        ].value
+                      )}
+                    </LightBadge>
+                  </span>
+                )}
+              </div>
+              <div>
                 <a href={`${BASE_URI}${envDetails._site.href}`} target="_blank">
                   Open in LaunchDarkly
                 </a>
