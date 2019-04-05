@@ -4,6 +4,7 @@ import { CopyText } from "./copy-button";
 import { RelativeTimeStamp } from "./relative-time-stamp";
 import { Maintainer } from "./maintainer";
 import { ListPlugins } from "./list-plugins";
+import { EnvironmentVariation } from "./details-view/environment-variation";
 
 import { LightBadge, SwitchBadge } from "./badge.styles";
 import {
@@ -60,20 +61,10 @@ export function ToggleDetails({ toggleDetails }) {
                   {envDetails.on ? "On" : "Off"}
                 </SwitchBadge>{" "}
               </div>
-              <div>
-                {!envDetails.fallthrough.rollout && (
-                  <span>
-                    Default: 100%{" "}
-                    <LightBadge>
-                      {String(
-                        toggleDetails.variations[
-                          envDetails.fallthrough.variation
-                        ].value
-                      )}
-                    </LightBadge>
-                  </span>
-                )}
-              </div>
+              <EnvironmentVariation
+                envDetails={envDetails}
+                variations={toggleDetails.variations}
+              />
               <div>
                 <a href={`${BASE_URI}${envDetails._site.href}`} target="_blank">
                   Open in LaunchDarkly
