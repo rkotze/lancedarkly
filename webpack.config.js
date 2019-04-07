@@ -2,7 +2,7 @@ const path = require("path");
 
 const webClient = {
   target: "web",
-  entry: ["babel-polyfill", "./src/webviews/index.js"],
+  entry: ["./src/webviews/index.js"],
   output: {
     filename: "bundle.js",
     path: path.resolve(__dirname, "dist")
@@ -13,10 +13,7 @@ const webClient = {
         test: /\.js$/,
         exclude: /node_modules/,
         use: {
-          loader: "babel-loader",
-          options: {
-            presets: ["react", "env", "stage-1"]
-          }
+          loader: "babel-loader"
         }
       }
     ]
