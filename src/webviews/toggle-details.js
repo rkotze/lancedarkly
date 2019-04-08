@@ -5,8 +5,9 @@ import { RelativeTimeStamp } from "./relative-time-stamp";
 import { Maintainer } from "./maintainer";
 import { ListPlugins } from "./list-plugins";
 import { EnvironmentVariation } from "./details-view/environment-variation";
+import { ToggleBadge } from "./toggle-badge";
 
-import { LightBadge, SwitchBadge } from "./badge.styles";
+import { LightBadge } from "./badge.styles";
 import { FirstHeading, SecondHeading, Button } from "./core.styles";
 import {
   ThemeLabel,
@@ -57,11 +58,7 @@ export function ToggleDetails({ toggleDetails }) {
           return (
             <EnvironmentToggleLayout key={i}>
               <ThemeLabel>{envDetails._environmentName}:</ThemeLabel>
-              <div>
-                <SwitchBadge toggleState={envDetails.on}>
-                  {envDetails.on ? "On" : "Off"}
-                </SwitchBadge>{" "}
-              </div>
+              <ToggleBadge envDetails={envDetails} ldKey={toggleDetails.key} />
               <EnvironmentVariation
                 envDetails={envDetails}
                 variations={toggleDetails.variations}

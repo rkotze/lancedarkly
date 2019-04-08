@@ -1,6 +1,7 @@
 const { fetchTogglesAction } = require("../vscode/fetch-toggles");
 const { copyLdKeyAction } = require("../vscode/copy-ld-key-clipboard");
 const { resolvePluginsAction } = require("../vscode/load-plugins");
+const { confirmToggleState } = require("../vscode/update-toggle-state");
 // example function
 function log(arg) {
   console.log("log: ", arg);
@@ -22,7 +23,8 @@ exports.messageListener = function messageListener(webview, context) {
       { name: "log", fn: log },
       fetchTogglesAction,
       copyLdKeyAction,
-      resolvePluginsAction
+      resolvePluginsAction,
+      confirmToggleState
     ]),
     undefined,
     context.subscriptions
