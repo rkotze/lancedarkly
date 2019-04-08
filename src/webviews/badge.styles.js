@@ -12,6 +12,10 @@ const BaseBadge = styled.span`
 export const GreenBadge = styled(BaseBadge)`
   background-color: ${colours.green};
 `;
+export const InlineLightBadge = styled(BaseBadge)`
+  padding: 2px 6px;
+  color: ${({ colour }) => (colour == "green" ? colours.green : colours.blue)};
+`;
 export const LightBadge = styled(BaseBadge)`
   margin: 0px 6px;
   color: ${colours.blue};

@@ -1,14 +1,15 @@
 import React from "react";
-import { LightBadge } from "../badge.styles";
+import { InlineLightBadge } from "../badge.styles";
 
 function VariationView({ variation, variationList }) {
   if (variationList) {
     return (
       <div>
-        {variationList.map(({ variation, weight }) => {
+        {variationList.map(({ variation, weight }, i) => {
           return (
-            <span>
-              {weight}% <LightBadge>{variation}</LightBadge>
+            <span key={i}>
+              <InlineLightBadge colour="green">{weight}%</InlineLightBadge>
+              <InlineLightBadge>{variation}</InlineLightBadge>
             </span>
           );
         })}
@@ -17,7 +18,7 @@ function VariationView({ variation, variationList }) {
   }
   return (
     <div>
-      <LightBadge>{variation}</LightBadge>
+      <InlineLightBadge>{variation}</InlineLightBadge>
     </div>
   );
 }
