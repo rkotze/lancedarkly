@@ -7,57 +7,53 @@ async function updateToggleState(key, environment, on, comment) {
     const accessToken = settings.get("accessToken");
     const defaultProject = settings.get("defaultProject");
     const baseURI = settings.get("baseURI");
+    const toggleStateBody = JSON.stringify({
+      comment: comment || "",
+      patch: [
+        {
+          op: "replace",
+          path: `/environments/${environment}/on`,
+          value: on
+        }
+      ]
+    });
+
     const flag = await fetch(
       `${baseURI}/api/v2/flags/${defaultProject}/${key}`,
       {
         method: "PATCH",
         headers: new fetch.Headers({
-          Authorization: accessToken
+          Authorization: accessToken,
+          "Content-Type": "application/json"
         }),
-        body: JSON.stringify({
-          comment: comment || "",
-          patch: [
-            {
-              op: "replace",
-              path: `/environments/${environment}/on`,
-              value: on
-            }
-          ]
-        })
+        body: toggleStateBody
       }
     );
+
+    if (flag.ok) return true;
+
+    vscode.window.showErrorMessage("Error: status code: " + flag.status);
+    return false;
   } catch (err) {
     vscode.window.showErrorMessage("Error: " + err.message);
   }
-  return await flag.json();
 }
 
 async function confirmToggleState(key, environment, on) {
-  // const toggles = await vscode.window.showInputBox({
-  //   prompt: `Confirm: ${key}, ${environment}, ${on}`,
-  //   placeholder: "Comment"
-  // });
-
-  const box = vscode.window.createInputBox();
-  box.title = `Toggle: ${key}, ${environment}, ${on}`;
-  box.placeholder = "Comment";
-  box.buttons = [
-    new vscode.ThemeIcon("check"),
-    new vscode.ThemeIcon("remove-close")
-  ];
-  box.show();
-  box.onDidAccept(() => {
-    box.hide();
-    console.log("Comment: ", box.value);
+  const toggleText = on ? "On" : "Off";
+  const confirmText = await vscode.window.showInputBox({
+    prompt: `Toggle: ${toggleText} ${key}?`,
+    placeholder: "Optional comment"
   });
-  // console.log(toggles);
-  // this.webview.postMessage({
-  //   fetchToggles: toggles.items
-  // });
-}
 
-async function ConfirmInputBox() {
-  return vscode.window.create;
+  if (typeof confirmText !== "undefined") {
+    const updated = await updateToggleState(key, environment, on, confirmText);
+    if (updated) {
+      this.webview.postMessage({
+        confirmToggleState: { on: on, env: environment, key: key }
+      });
+    }
+  }
 }
 
 exports.confirmToggleState = {

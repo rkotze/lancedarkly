@@ -56,7 +56,7 @@ export function ToggleDetails({ toggleDetails }) {
         {Object.keys(toggleDetails.environments).map((prop, i) => {
           const envDetails = toggleDetails.environments[prop];
           return (
-            <EnvironmentToggleLayout key={i}>
+            <EnvironmentToggleLayout key={envDetails.lastModified}>
               <ThemeLabel>{envDetails._environmentName}:</ThemeLabel>
               <ToggleBadge envDetails={envDetails} ldKey={toggleDetails.key} />
               <EnvironmentVariation
