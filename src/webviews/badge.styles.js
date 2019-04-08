@@ -21,6 +21,7 @@ export const LightBadge = styled(BaseBadge)`
   color: ${colours.blue};
 `;
 export const SwitchBadge = styled(BaseBadge)`
+  cursor: pointer;
   margin: 0px 6px;
   background-color: ${({ toggleState }) =>
     toggleState ? colours.green : colours.blue};
