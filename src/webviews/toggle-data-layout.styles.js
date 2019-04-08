@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const EnvironmentToggleLayout = styled.div`
   display: grid;
-  grid-template-columns: 25% 15% 30% 30%;
+  grid-template-columns: 25% 15% 45% 15%;
   width: 100%;
   margin: 10px 0;
 `;

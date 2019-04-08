@@ -7,6 +7,7 @@ import { ListPlugins } from "./list-plugins";
 import { EnvironmentVariation } from "./details-view/environment-variation";
 
 import { LightBadge, SwitchBadge } from "./badge.styles";
+import { FirstHeading, SecondHeading, Button } from "./core.styles";
 import {
   ThemeLabel,
   VariationToggleLayout,
@@ -16,7 +17,7 @@ import {
 export function ToggleDetails({ toggleDetails }) {
   return (
     <div>
-      <h2>{toggleDetails.name}</h2>
+      <FirstHeading>{toggleDetails.name}</FirstHeading>
       <p>
         <ThemeLabel>Created Date:</ThemeLabel>{" "}
         <RelativeTimeStamp dateNumber={toggleDetails.creationDate} />
@@ -40,7 +41,7 @@ export function ToggleDetails({ toggleDetails }) {
         <LightBadge>{toggleDetails.kind}</LightBadge>
       </p>
       <div>
-        <h3>Variations</h3>
+        <SecondHeading>Variations</SecondHeading>
         {toggleDetails.variations.map((variation, i) => (
           <VariationToggleLayout key={i}>
             <ThemeLabel>Variation {i + 1}:</ThemeLabel>{" "}
@@ -50,7 +51,7 @@ export function ToggleDetails({ toggleDetails }) {
         ))}
       </div>
       <div>
-        <h3>Environments</h3>
+        <SecondHeading>Environments</SecondHeading>
         {Object.keys(toggleDetails.environments).map((prop, i) => {
           const envDetails = toggleDetails.environments[prop];
           return (
@@ -66,9 +67,12 @@ export function ToggleDetails({ toggleDetails }) {
                 variations={toggleDetails.variations}
               />
               <div>
-                <a href={`${BASE_URI}${envDetails._site.href}`} target="_blank">
-                  Open in LaunchDarkly
-                </a>
+                <Button
+                  href={`${BASE_URI}${envDetails._site.href}`}
+                  target="_blank"
+                >
+                  Edit
+                </Button>
               </div>
             </EnvironmentToggleLayout>
           );
