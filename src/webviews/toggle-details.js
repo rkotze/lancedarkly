@@ -5,7 +5,7 @@ import { RelativeTimeStamp } from "./relative-time-stamp";
 import { Maintainer } from "./maintainer";
 import { ListPlugins } from "./list-plugins";
 import { EnvironmentVariation } from "./details-view/environment-variation";
-import { ToggleBadge } from "./toggle-badge";
+import { ToggleBadge } from "./details-view/toggle-badge";
 
 import { LightBadge } from "./badge.styles";
 import { FirstHeading, SecondHeading, Button } from "./core.styles";

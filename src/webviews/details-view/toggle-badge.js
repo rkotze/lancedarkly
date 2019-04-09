@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import { VsCodeContext } from "./vs-code-context/index";
+import { VsCodeContext } from "../vs-code-context/index";
 
-import { SwitchBadge } from "./badge.styles";
+import { SwitchBadge } from "../badge.styles";
 
 export class ToggleBadge extends Component {
   constructor(props) {
