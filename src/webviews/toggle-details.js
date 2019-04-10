@@ -6,6 +6,7 @@ import { Maintainer } from "./maintainer";
 import { ListPlugins } from "./list-plugins";
 import { EnvironmentVariation } from "./details-view/environment-variation";
 import { ToggleBadge } from "./details-view/toggle-badge";
+import { HandleToggleState } from "./details-view/handle-toggle-state";
 
 import { LightBadge } from "./badge.styles";
 import { FirstHeading, SecondHeading, Button } from "./core.styles";
@@ -53,16 +54,26 @@ export function ToggleDetails({ toggleDetails }) {
       </div>
       <div>
         <SecondHeading>Environments</SecondHeading>
-        {Object.keys(toggleDetails.environments).map((prop, i) => {
+        {Object.keys(toggleDetails.environments).map(prop => {
           const envDetails = toggleDetails.environments[prop];
           return (
             <EnvironmentToggleLayout key={envDetails.lastModified}>
               <ThemeLabel>{envDetails._environmentName}:</ThemeLabel>
-              <ToggleBadge envDetails={envDetails} ldKey={toggleDetails.key} />
-              <EnvironmentVariation
+              <HandleToggleState
                 envDetails={envDetails}
-                variations={toggleDetails.variations}
-              />
+                ldKey={toggleDetails.key}
+              >
+                {(handleToggleState, { envDetails, on }) => (
+                  <React.Fragment>
+                    <ToggleBadge on={on} onClick={handleToggleState} />
+                    <EnvironmentVariation
+                      envDetails={envDetails}
+                      variations={toggleDetails.variations}
+                    />
+                  </React.Fragment>
+                )}
+              </HandleToggleState>
+
               <div>
                 <Button
                   href={`${BASE_URI}${envDetails._site.href}`}

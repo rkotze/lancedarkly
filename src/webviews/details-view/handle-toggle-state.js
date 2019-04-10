@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { VsCodeContext } from "../vs-code-context/index";
 
-import { SwitchBadge } from "../badge.styles";
-
 export class HandleToggleState extends Component {
   constructor(props) {
     super(props);
@@ -33,10 +31,10 @@ export class HandleToggleState extends Component {
         this.env === confirmToggleState.env &&
         ldKey === confirmToggleState.key
       ) {
+        envDetails.on = confirmToggleState.on;
         this.setState({
           on: confirmToggleState.on
         });
-        envDetails.on = confirmToggleState.on;
       }
     });
   }
@@ -46,7 +44,7 @@ export class HandleToggleState extends Component {
     const { children, envDetails } = this.props;
     return (
       <React.Fragment>
-        {children(handleToggleState, { envDetails })}
+        {children(this.handleToggleState, { envDetails, on })}
       </React.Fragment>
     );
   }
