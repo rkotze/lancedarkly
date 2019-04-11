@@ -23,3 +23,11 @@ export const Button = styled.a`
     outline: none;
   }
 `;
+
+export const CancelButton = styled(Button)`
+  background-color: #666;
+  &:hover {
+    background-color: #333;
+    color: #ffffff;
+  }
+`;

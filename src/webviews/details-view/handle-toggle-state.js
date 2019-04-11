@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { VsCodeContext } from "../vs-code-context/index";
 
+import { Prompt } from "../prompt-box/prompt";
+import { SecondHeading, Button, CancelButton } from "../core.styles";
+
 export class HandleToggleState extends Component {
   constructor(props) {
     super(props);
@@ -44,6 +47,15 @@ export class HandleToggleState extends Component {
     const { children, envDetails } = this.props;
     return (
       <React.Fragment>
+        <Prompt>
+          {({ setOpen }) => (
+            <div>
+              <SecondHeading>First prop up</SecondHeading>
+              <Button href="#">Confirm</Button>
+              <CancelButton href="#">Cancel</CancelButton>
+            </div>
+          )}
+        </Prompt>
         {children(this.handleToggleState, { envDetails, on })}
       </React.Fragment>
     );
