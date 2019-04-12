@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import styled from "styled-components";
-
+import { colours } from "../colour-constants.styles";
 import {
   SecondHeading,
   Button,
@@ -11,12 +11,13 @@ import {
 const Modal = styled.div`
   display: block;
   position: absolute;
-  width: 300px;
+  width: 400px;
   height: 180px;
   padding: 10px;
-  border: 1px solid #fff;
+  border: 1px solid ${colours.green};
+  box-shadow: 0px 0px 4px ${colours.green};
   border-radius: 4px;
-  background-color: #222;
+  background-color: #111;
   z-index: 2;
   top: 50%;
   left: 50%;
@@ -24,12 +25,14 @@ const Modal = styled.div`
   transform: translate(-50%, -50%);
 `;
 
+const PromptHeading = styled(SecondHeading)`
+  color: ${colours.green}
+  margin-top: 0;
+`;
+
 export class Prompt extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      open: props.open
-    };
   }
 
   static defaultProps = {
@@ -41,28 +44,21 @@ export class Prompt extends Component {
   handleConfirm = e => {
     e.preventDefault();
     const { onConfirm } = this.props;
-    this.setState({
-      open: false
-    });
     onConfirm();
   };
 
   handleCancel = e => {
     e.preventDefault();
     const { onCancel } = this.props;
-    this.setState({
-      open: false
-    });
     onCancel();
   };
 
   render() {
-    const { open } = this.state;
-    const { children, title } = this.props;
+    const { children, title, open } = this.props;
     if (open) {
       return (
         <Modal>
-          <SecondHeading>{title}</SecondHeading>
+          <PromptHeading>{title}</PromptHeading>
           {children()}
           <ActionsContainer>
             <Button href="#" onClick={this.handleConfirm}>

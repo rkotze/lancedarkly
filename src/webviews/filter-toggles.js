@@ -1,26 +1,7 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-
 import { VsCodeContext } from "./vs-code-context/index";
-import { colours } from "./colour-constants.styles";
 
-const InputField = styled.input`
-  background: inherit;
-  color: inherit;
-  border: 1px solid ${colours.green};
-  border-radius: 4px;
-  padding: 6px;
-  width: calc(100% - 14px);
-  &:focus {
-    outline: none;
-    box-shadow: 0px 0px 6px ${colours.green};
-  }
-  margin: 0;
-`;
-
-const FilterForm = styled.form`
-  margin: 10px 0;
-`;
+import { InputField, FilterForm } from "./core.styles";
 
 export class FilterToggles extends Component {
   constructor(props) {
