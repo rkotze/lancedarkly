@@ -2,7 +2,12 @@ import React, { Component } from "react";
 import { VsCodeContext } from "../vs-code-context/index";
 
 import { Prompt } from "../prompt-box/prompt";
-import { SecondHeading, Button, CancelButton } from "../core.styles";
+import {
+  SecondHeading,
+  Button,
+  CancelButton,
+  ActionsContainer
+} from "../core.styles";
 
 export class HandleToggleState extends Component {
   constructor(props) {
@@ -42,19 +47,22 @@ export class HandleToggleState extends Component {
     });
   }
 
+  handleConfirm = () => {};
+
+  handleCancel = () => {};
+
   render() {
     const { on } = this.state;
     const { children, envDetails } = this.props;
     return (
       <React.Fragment>
-        <Prompt>
-          {({ setOpen }) => (
-            <div>
-              <SecondHeading>First prop up</SecondHeading>
-              <Button href="#">Confirm</Button>
-              <CancelButton href="#">Cancel</CancelButton>
-            </div>
-          )}
+        <Prompt
+          open={true}
+          title="Confirm toggle update"
+          onConfirm={this.handleConfirm}
+          onCancel={this.handleCancel}
+        >
+          {() => <div>Content goes here</div>}
         </Prompt>
         {children(this.handleToggleState, { envDetails, on })}
       </React.Fragment>

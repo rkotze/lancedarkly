@@ -31,3 +31,8 @@ export const CancelButton = styled(Button)`
     color: #ffffff;
   }
 `;
+
+export const ActionsContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
