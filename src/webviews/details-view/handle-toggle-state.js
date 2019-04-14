@@ -3,7 +3,7 @@ import { VsCodeContext } from "../vs-code-context/index";
 
 import { Prompt } from "../prompt-box/prompt";
 import { InputField } from "../core.styles";
-import { InlineLightBadge, SwitchBadge } from "../badge.styles";
+import { SwitchBadge } from "../badge.styles";
 
 export class HandleToggleState extends Component {
   constructor(props) {
@@ -16,12 +16,6 @@ export class HandleToggleState extends Component {
       showPrompt: false
     };
   }
-
-  handleToggleState = () => {
-    this.setState({
-      showPrompt: true
-    });
-  };
 
   componentDidMount() {
     const { vscodeSubscribe } = this.context;
@@ -41,33 +35,46 @@ export class HandleToggleState extends Component {
     });
   }
 
+  handleConfirm = () => {
+    this.updateToggle();
+
+    this.hidePrompt();
+  };
+
+  handleCancel = () => {
+    this.hidePrompt();
+  };
+
   getComment = comment => {
     this.comment = comment;
   };
 
-  handleConfirm = () => {
-    // const { vscode } = this.context;
-    // const { ldKey } = this.props;
-    // const { on } = this.state;
-    // vscode.postMessage({
-    //   name: "confirmToggleState",
-    //   args: [ldKey, this.env, !on]
-    // });
+  updateToggle = () => {
+    const { vscode } = this.context;
+    const { ldKey } = this.props;
+    const { on } = this.state;
+    vscode.postMessage({
+      name: "confirmToggleState",
+      args: [ldKey, this.env, !on, this.comment]
+    });
+    this.comment = ""; //clear comment
+  };
 
+  hidePrompt = () => {
     this.setState({
       showPrompt: false
     });
   };
 
-  handleCancel = () => {
+  showPrompt = () => {
     this.setState({
-      showPrompt: false
+      showPrompt: true
     });
   };
 
   render() {
     const { on, showPrompt } = this.state;
-    const { children, envDetails, ldKey } = this.props;
+    const { children, envDetails } = this.props;
     return (
       <React.Fragment>
         <Prompt
@@ -76,9 +83,9 @@ export class HandleToggleState extends Component {
           onConfirm={this.handleConfirm}
           onCancel={this.handleCancel}
         >
-          {() => <ConfirmMessage getComment={this.getComment} />}
+          {() => <ConfirmMessage on={on} getComment={this.getComment} />}
         </Prompt>
-        {children(this.handleToggleState, { envDetails, on })}
+        {children(this.showPrompt, { envDetails, on })}
       </React.Fragment>
     );
   }

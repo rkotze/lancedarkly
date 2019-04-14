@@ -39,20 +39,12 @@ async function updateToggleState(key, environment, on, comment) {
   }
 }
 
-async function confirmToggleState(key, environment, on) {
-  const toggleText = on ? "On" : "Off";
-  const confirmText = await vscode.window.showInputBox({
-    prompt: `Toggle: ${toggleText} ${key}?`,
-    placeholder: "Optional comment"
-  });
-
-  if (typeof confirmText !== "undefined") {
-    const updated = await updateToggleState(key, environment, on, confirmText);
-    if (updated) {
-      this.webview.postMessage({
-        confirmToggleState: { on: on, env: environment, key: key }
-      });
-    }
+async function confirmToggleState(key, environment, on, confirmText) {
+  const updated = await updateToggleState(key, environment, on, confirmText);
+  if (updated) {
+    this.webview.postMessage({
+      confirmToggleState: { on: on, env: environment, key: key }
+    });
   }
 }
 
