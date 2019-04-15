@@ -9,6 +9,10 @@ export const FirstHeading = styled.h2([baseHeading]);
 
 export const SecondHeading = styled.h3([baseHeading]);
 
+export const BoldLarge = styled.span`
+font-weight: bold; 
+font-size: 16px;`
+
 export const Button = styled.a`
   background-color: ${colours.blue};
   color: #ffffff;

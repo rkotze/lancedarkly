@@ -2,8 +2,10 @@ import React, { Component } from "react";
 import { VsCodeContext } from "../vs-code-context/index";
 
 import { Prompt } from "../prompt-box/prompt";
-import { InputField } from "../core.styles";
+import { InputField, BoldLarge } from "../core.styles";
 import { SwitchBadge } from "../badge.styles";
+
+const formatTitle = (text) => <React.Fragment>Confirm <BoldLarge>{text}</BoldLarge> toggle update</React.Fragment> 
 
 export class HandleToggleState extends Component {
   constructor(props) {
@@ -79,7 +81,7 @@ export class HandleToggleState extends Component {
       <React.Fragment>
         <Prompt
           open={showPrompt}
-          title={`Confirm ${this.env} toggle update`}
+          title={formatTitle(this.env)}
           onConfirm={this.handleConfirm}
           onCancel={this.handleCancel}
         >

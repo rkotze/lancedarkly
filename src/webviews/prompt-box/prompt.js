@@ -17,17 +17,19 @@ const Modal = styled.div`
   border: 1px solid ${colours.green};
   box-shadow: 0px 0px 4px ${colours.green};
   border-radius: 4px;
-  background-color: #111;
   z-index: 2;
   top: 50%;
   left: 50%;
   margin-right: -50%;
   transform: translate(-50%, -50%);
+  background-color: var(--vscode-editor-background);
 `;
 
 const PromptHeading = styled(SecondHeading)`
   color: ${colours.green}
   margin-top: 0;
+  padding-bottom: 10px;
+  border-bottom: 1px solid ${colours.green};
 `;
 
 export class Prompt extends Component {
