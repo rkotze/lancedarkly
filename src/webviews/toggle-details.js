@@ -78,8 +78,9 @@ export function ToggleDetails({ toggleDetails }) {
                 <Button
                   href={`${BASE_URI}${envDetails._site.href}`}
                   target="_blank"
+                  title="Open in LaunchDarkly"
                 >
-                  Edit
+                  Open
                 </Button>
               </div>
             </EnvironmentToggleLayout>
