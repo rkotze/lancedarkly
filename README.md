@@ -1,5 +1,7 @@
 # LanceDarkly
 
+[![](https://vsmarketplacebadge.apphb.com/version-short/RichardKotze.lancedarkly.svg)](https://marketplace.visualstudio.com/items?itemName=RichardKotze.lancedarkly)
+
 > Beta release
 
 1. [Get started](#get-started)
