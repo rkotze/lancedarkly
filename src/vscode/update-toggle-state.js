@@ -1,6 +1,8 @@
 const vscode = require("vscode");
 const fetch = require("node-fetch");
 
+const { LaunchDarklyApiError } = require("./launch-darkly-api-error");
+
 async function updateToggleState(key, environment, on, comment) {
   try {
     const settings = vscode.workspace.getConfiguration("LanceDarkly");
@@ -30,12 +32,13 @@ async function updateToggleState(key, environment, on, comment) {
       }
     );
 
-    if (flag.ok) return true;
+    if (flag.ok) return await flag.json();
 
-    vscode.window.showErrorMessage("Error: status code: " + flag.status);
-    return false;
+    throw new LaunchDarklyApiError(flag.status, await flag.json());
   } catch (err) {
-    vscode.window.showErrorMessage("Error: " + err.message);
+    if (err instanceof LaunchDarklyApiError) err.popupAlert();
+    else
+      vscode.window.showErrorMessage("Error updating toggle: " + err.message);
   }
 }
 
