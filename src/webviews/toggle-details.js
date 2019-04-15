@@ -1,5 +1,6 @@
 import React from "react";
 
+import { uniqueKey } from "./unique-key";
 import { CopyText } from "./copy-button";
 import { RelativeTimeStamp } from "./relative-time-stamp";
 import { Maintainer } from "./maintainer";
@@ -57,7 +58,7 @@ export function ToggleDetails({ toggleDetails }) {
         {Object.keys(toggleDetails.environments).map(prop => {
           const envDetails = toggleDetails.environments[prop];
           return (
-            <EnvironmentToggleLayout key={envDetails.lastModified}>
+            <EnvironmentToggleLayout key={uniqueKey(toggleDetails.key)}>
               <ThemeLabel>{envDetails._environmentName}:</ThemeLabel>
               <HandleToggleState
                 envDetails={envDetails}
