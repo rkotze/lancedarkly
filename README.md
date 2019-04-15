@@ -14,13 +14,15 @@ Switching between VS Code, LaunchDarkly web app and other toggle integrations is
 
 ### Solution
 
-A VS Code extension to query LaunchDarkly API to list all toggles and make it easy to read toggle data.
+A VS Code extension to bring LaunchDarkly toggle management closer to your development environment and show **all** environment toggle states.
 
 ## Get started
 
 1. You will need a LaunchDarkly account.
 
 1. From LaunchDarkly you will need to generate an **Access Token**. You can find it under: `Account Settings -> Access Tokens -> Your access tokens`.
+
+1. Set the `role` to `writer` to update toggle state (Turn toggles on/off).
 
 1. Default Project key. It's all lowercase and highlighted in gray. You can find it under: `Account Settings -> Projects -> Your projects`
 
@@ -42,6 +44,8 @@ Update your setting in VS Code under `LanceDarkly`. See image below:
   - Maintainer information
   - Variations: value and name
   - Environments: show **on** or **off** state
+  - Show variation value depending on toggle state
+- Update toggle state on/off per environment
 - Open toggle in LaunchDarkly
 - Copy key to clipboard
 - Settings for **defaultProject** and **accessToken**
