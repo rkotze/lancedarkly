@@ -16,9 +16,9 @@ export class FilterToggles extends Component {
 
     const searchText = filterText.toLowerCase();
     return toggles.filter(toggle => {
-      const searchableText = `${toggle.name} ${
-        toggle.description
-      }`.toLowerCase();
+      const searchableText = [toggle.name, toggle.description, toggle.key]
+        .join(" ")
+        .toLowerCase();
       return searchableText.includes(searchText);
     });
   };
