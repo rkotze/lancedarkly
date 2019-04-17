@@ -47,7 +47,11 @@ export class HandleToggleState extends Component {
     this.hidePrompt();
   };
 
-  getComment = comment => {
+  getComment = () => {
+    return this.comment;
+  };
+
+  setComment = comment => {
     this.comment = comment;
   };
 
@@ -57,9 +61,9 @@ export class HandleToggleState extends Component {
     const { on } = this.state;
     vscode.postMessage({
       name: "confirmToggleState",
-      args: [ldKey, this.env, !on, this.comment]
+      args: [ldKey, this.env, !on, this.getComment()]
     });
-    this.comment = ""; //clear comment
+    this.setComment("");
   };
 
   hidePrompt = () => {
@@ -85,7 +89,7 @@ export class HandleToggleState extends Component {
           onConfirm={this.handleConfirm}
           onCancel={this.handleCancel}
         >
-          {() => <ConfirmMessage on={on} getComment={this.getComment} />}
+          {() => <ConfirmMessage on={on} getComment={this.setComment} />}
         </Prompt>
         {children(this.showPrompt, { envDetails, on })}
       </React.Fragment>
@@ -116,7 +120,7 @@ class ConfirmMessage extends Component {
     return (
       <div>
         <p>
-          State: <SwitchBadge>{!on ? "On" : "Off"}</SwitchBadge>
+          Change state to: <SwitchBadge>{!on ? "On" : "Off"}</SwitchBadge>
         </p>
         <p>
           <InputField
