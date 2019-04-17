@@ -2,6 +2,14 @@
 
 Follows [Semantic Versioning](https://semver.org/).
 
+## [0.5.0] -- 2019-04-17
+
+### Added
+
+- Show what variant is set for the selected toggle state, including default rollout. e.g. 50/50
+- Update toggle state on or off for each environment
+- Filter by toggle key
+
 ## [0.4.0] -- 2019-04-04
 
 ### Added

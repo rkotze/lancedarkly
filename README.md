@@ -46,7 +46,7 @@ Update your setting in VS Code under `LanceDarkly`. See image below:
   - Maintainer information
   - Variations: value and name
   - Environments: show **on** or **off** state
-  - Show variation value depending on toggle state
+  - Show what variant is set for the selected toggle state
 - Update toggle state on/off per environment
 - Open toggle in LaunchDarkly
 - Copy key to clipboard
