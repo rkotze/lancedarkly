@@ -38,12 +38,12 @@ export function ListToggles({ children, onToggleClicked }) {
   }
 
   function handleFilterToggles(filterText) {
-    setToggles(filterManager.filter({ filterText }));
+    setToggles(filterManager.search({ filterText }));
   }
 
   function handleSortToggles(order) {
     setToggles(
-      filterManager.sort({
+      filterManager.search({
         sortBy: {
           created: order
         }
@@ -75,8 +75,8 @@ export function ListToggles({ children, onToggleClicked }) {
         <TogglesPanel>
           <FilterToggles onFilterToggles={handleFilterToggles} />
           <Right>
-            <SortToggles onSortToggles={handleSortToggles} />
-            Total: <GreenBadge>{toggles.length}</GreenBadge>
+            <SortToggles onSortToggles={handleSortToggles} /> Total:{" "}
+            <GreenBadge>{toggles.length}</GreenBadge>
           </Right>
           {fetchStatus === FETCH_STATUS.FETCHING && (
             <PositiveAlert>Fetching toggles ...</PositiveAlert>

@@ -24,9 +24,12 @@ export class SortToggles extends Component {
   render() {
     const { order } = this.state;
     return (
-      <Button href="#" onClick={this.onClickHander}>
-        {order}
-      </Button>
+      <span>
+        Sort:{" "}
+        <Button href="#" onClick={this.onClickHander}>
+          {order}
+        </Button>
+      </span>
     );
   }
 }

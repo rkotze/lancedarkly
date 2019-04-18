@@ -14,12 +14,17 @@ export class FilterManager {
     };
   }
 
-  filter(filterParams) {
+  search(filterParams) {
     this.filterParams = Object.assign({}, this.filterParams, filterParams);
+    const {
+      filterText,
+      sortBy: { created }
+    } = this.filterParams;
+    return this.sort(this.filter(this.toggles, filterText), created);
+  }
 
-    const { filterText } = this.filterParams;
-
-    return this.toggles.filter(toggle => {
+  filter(toggles, filterText) {
+    return toggles.filter(toggle => {
       const searchableText = [toggle.name, toggle.description, toggle.key]
         .join(" ")
         .toLowerCase();
@@ -27,16 +32,11 @@ export class FilterManager {
     });
   }
 
-  sort(filterParams) {
-    this.filterParams = Object.assign({}, this.filterParams, filterParams);
-    const {
-      sortBy: { created }
-    } = this.filterParams;
-
+  sort(toggles, created) {
     const sortBy =
       created === DATE.OLDEST ? createSortOldest : createSortNewest;
 
-    return [].concat(this.toggles).sort(sortBy);
+    return [].concat(toggles).sort(sortBy);
   }
 }
 
