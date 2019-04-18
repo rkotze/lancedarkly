@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { VsCodeContext } from "./vs-code-context/index";
 import { FilterToggles } from "./filter-toggles";
+import { FilterManager } from "./filter-manager";
 import { GreenBadge } from "./badge.styles";
 import {
   ToggleViews,
@@ -18,6 +19,8 @@ const FETCH_STATUS = {
   DONE: "done"
 };
 
+let filterManager = null;
+
 export function ListToggles({ children, onToggleClicked }) {
   const { vscodeSubscribe, vscode } = useContext(VsCodeContext);
   const appState = vscode.getState() || {};
@@ -33,12 +36,17 @@ export function ListToggles({ children, onToggleClicked }) {
     setToggleDetails(toggleDetails);
   }
 
+  function handleFilterToggles(filterText) {
+    setToggles(filterManager.filter({ filterText }));
+  }
+
   vscodeSubscribe(event => {
     const { fetchToggles } = event.data;
     if (fetchToggles) {
       vscode.setState({
         toggles: fetchToggles
       });
+      filterManager = new FilterManager(fetchToggles);
       setToggles(fetchToggles);
       setFetchStatus(FETCH_STATUS.DONE);
     }
@@ -54,7 +62,7 @@ export function ListToggles({ children, onToggleClicked }) {
     <div>
       <ToggleViews>
         <TogglesPanel>
-          <FilterToggles onFilterToggles={setToggles} />
+          <FilterToggles onFilterToggles={handleFilterToggles} />
           <Right>
             Total: <GreenBadge>{toggles.length}</GreenBadge>
           </Right>

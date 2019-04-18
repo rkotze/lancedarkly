@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { VsCodeContext } from "./vs-code-context/index";
 
 import { InputField, FilterForm } from "./core.styles";
 
@@ -9,23 +8,9 @@ export class FilterToggles extends Component {
     this.filterInput = React.createRef();
   }
 
-  filterToggles = filterText => {
-    const { vscode } = this.context;
-
-    const toggles = vscode.getState().toggles;
-
-    const searchText = filterText.toLowerCase();
-    return toggles.filter(toggle => {
-      const searchableText = [toggle.name, toggle.description, toggle.key]
-        .join(" ")
-        .toLowerCase();
-      return searchableText.includes(searchText);
-    });
-  };
-
   onChangeHander = e => {
     const { onFilterToggles } = this.props;
-    onFilterToggles(this.filterToggles(e.target.value));
+    onFilterToggles(e.target.value.toLowerCase());
   };
 
   componentDidMount() {
@@ -45,5 +30,3 @@ export class FilterToggles extends Component {
     );
   }
 }
-
-FilterToggles.contextType = VsCodeContext;
