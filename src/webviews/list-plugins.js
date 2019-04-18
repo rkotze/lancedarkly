@@ -1,5 +1,6 @@
 import React, { useState, useContext } from "react";
 import { VsCodeContext } from "./vs-code-context/index";
+import { uniqueKey } from "./unique-key";
 
 import { ThemeLabel, PluginLayout } from "./toggle-data-layout.styles";
 import { usePrevious } from "./use-previous";
@@ -28,10 +29,10 @@ export function ListPlugins({ ldKey }) {
       return (
         <div>
           {fields.map(({ title, fields }) => (
-            <div key={title}>
+            <div key={uniqueKey(title)}>
               <h3>{title}</h3>
               {fields.map(list => (
-                <PluginLayout key={list[0].field}>
+                <PluginLayout key={uniqueKey("plugin")}>
                   {list.slice(0, 4).map((field, i) => {
                     if (i === 0)
                       return <ThemeLabel key={i}>{field}</ThemeLabel>;
