@@ -26,4 +26,35 @@ export class FilterManager {
       return searchableText.includes(filterText);
     });
   }
+
+  sort(filterParams) {
+    this.filterParams = Object.assign({}, this.filterParams, filterParams);
+    const {
+      sortBy: { created }
+    } = this.filterParams;
+
+    const sortBy =
+      created === DATE.OLDEST ? createSortOldest : createSortNewest;
+
+    return [].concat(this.toggles).sort(sortBy);
+  }
+}
+
+function createSortNewest(a, b) {
+  const createdA = a.creationDate;
+  const createdB = b.creationDate;
+  if (createdA > createdB) return -1;
+
+  if (createdA < createdB) return 1;
+  return 0;
+}
+
+function createSortOldest(a, b) {
+  const createdA = a.creationDate;
+  const createdB = b.creationDate;
+  if (createdA < createdB) return -1;
+
+  if (createdA > createdB) return 1;
+
+  return 0;
 }

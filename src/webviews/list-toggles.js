@@ -2,6 +2,7 @@ import React, { useState, useContext } from "react";
 
 import { VsCodeContext } from "./vs-code-context/index";
 import { FilterToggles } from "./filter-toggles";
+import { SortToggles } from "./sort-toggles";
 import { FilterManager } from "./filter-manager";
 import { GreenBadge } from "./badge.styles";
 import {
@@ -40,6 +41,16 @@ export function ListToggles({ children, onToggleClicked }) {
     setToggles(filterManager.filter({ filterText }));
   }
 
+  function handleSortToggles(order) {
+    setToggles(
+      filterManager.sort({
+        sortBy: {
+          created: order
+        }
+      })
+    );
+  }
+
   vscodeSubscribe(event => {
     const { fetchToggles } = event.data;
     if (fetchToggles) {
@@ -64,6 +75,7 @@ export function ListToggles({ children, onToggleClicked }) {
         <TogglesPanel>
           <FilterToggles onFilterToggles={handleFilterToggles} />
           <Right>
+            <SortToggles onSortToggles={handleSortToggles} />
             Total: <GreenBadge>{toggles.length}</GreenBadge>
           </Right>
           {fetchStatus === FETCH_STATUS.FETCHING && (
