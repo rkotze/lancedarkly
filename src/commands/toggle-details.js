@@ -7,28 +7,43 @@ const packageJson = require("../../package.json");
 const { messageListener } = require("../message-delegation/");
 
 function toggleDetails({ context }) {
+  let panel;
   context.subscriptions.push(
     vscode.commands.registerCommand("lancedarkly.listAllToggles", () => {
-      const settings = vscode.workspace.getConfiguration("LanceDarkly");
-      const defaultProject = settings.get("defaultProject");
-      loadPlugins();
+      const columnToShowIn = vscode.window.activeTextEditor
+        ? vscode.window.activeTextEditor.viewColumn
+        : undefined;
 
-      const panel = vscode.window.createWebviewPanel(
-        "listAllToggles",
-        `LanceDarkly: ${defaultProject}`,
-        vscode.ViewColumn.One,
-        {
-          enableScripts: true,
-          retainContextWhenHidden: true // prevents rebuilding the view when switching tabs
-        }
-      );
+      if (panel) {
+        panel.reveal(columnToShowIn);
+      } else {
+        const settings = vscode.workspace.getConfiguration("LanceDarkly");
+        const defaultProject = settings.get("defaultProject");
+        loadPlugins();
+        panel = vscode.window.createWebviewPanel(
+          "listAllToggles",
+          `LanceDarkly: ${defaultProject}`,
+          vscode.ViewColumn.One,
+          {
+            enableScripts: true,
+            retainContextWhenHidden: true // prevents rebuilding the view when switching tabs
+          }
+        );
 
-      panel.iconPath = vscode.Uri.file(
-        context.asAbsolutePath("resources/lancedarkly-logo.svg")
-      );
+        panel.iconPath = vscode.Uri.file(
+          context.asAbsolutePath("resources/lancedarkly-logo.svg")
+        );
 
-      panel.webview.html = getWebviewContent(context, settings);
-      messageListener(panel.webview, context);
+        panel.webview.html = getWebviewContent(context, settings);
+        messageListener(panel.webview, context);
+        panel.onDidDispose(
+          () => {
+            panel = undefined;
+          },
+          null,
+          context.subscriptions
+        );
+      }
     })
   );
 }
