@@ -1,14 +1,12 @@
 const vscode = require("vscode");
 const fetch = require("node-fetch");
+const { getSettings } = require("./get-settings");
 
 const { LaunchDarklyApiError } = require("./launch-darkly-api-error");
 
 async function updateToggleState(key, environment, on, comment) {
   try {
-    const settings = vscode.workspace.getConfiguration("LanceDarkly");
-    const accessToken = settings.get("accessToken");
-    const defaultProject = settings.get("defaultProject");
-    const baseURI = settings.get("baseURI");
+    const { accessToken, defaultProject, baseURI } = getSettings();
     const toggleStateBody = JSON.stringify({
       comment: comment || "",
       patch: [

@@ -1,6 +1,7 @@
 const path = require("path");
 const vscode = require("vscode");
 const { loadPlugins } = require("../vscode/load-plugins");
+const { getSettings } = require("../vscode/get-settings");
 
 const packageJson = require("../../package.json");
 
@@ -17,12 +18,11 @@ function toggleDetails({ context }) {
       if (panel) {
         panel.reveal(columnToShowIn);
       } else {
-        const settings = vscode.workspace.getConfiguration("LanceDarkly");
-        const defaultProject = settings.get("defaultProject");
+        const settings = getSettings();
         loadPlugins();
         panel = vscode.window.createWebviewPanel(
           "listAllToggles",
-          `LanceDarkly: ${defaultProject}`,
+          `LanceDarkly: ${settings.defaultProject}`,
           vscode.ViewColumn.One,
           {
             enableScripts: true,
@@ -51,8 +51,6 @@ function toggleDetails({ context }) {
 exports.toggleDetails = toggleDetails;
 
 function getWebviewContent(context, settings) {
-  const baseURI = settings.get("baseURI");
-
   const scriptPathOnDisk = vscode.Uri.file(
     path.join(context.extensionPath, "dist", "bundle.js")
   );
@@ -76,7 +74,7 @@ function getWebviewContent(context, settings) {
 <script>
 var MEDIA_URI = '${mediaUri}';
 var VERSION = '${packageJson.version}';
-var BASE_URI = '${baseURI}';</script>
+var BASE_URI = '${settings.baseURI}';</script>
 <script src="${scriptUri}"></script>
 </body>
 </html>`;

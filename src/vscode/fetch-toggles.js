@@ -1,11 +1,9 @@
-const vscode = require("vscode");
 const fetch = require("node-fetch");
+const { getSettings } = require("./get-settings");
 
 async function fetchToggles() {
-  const settings = vscode.workspace.getConfiguration("LanceDarkly");
-  const accessToken = settings.get("accessToken");
-  const defaultProject = settings.get("defaultProject");
-  const baseURI = settings.get("baseURI");
+  const { accessToken, defaultProject, baseURI } = getSettings();
+
   const rawFlags = await fetch(`${baseURI}/api/v2/flags/${defaultProject}`, {
     headers: new fetch.Headers({
       Authorization: accessToken
