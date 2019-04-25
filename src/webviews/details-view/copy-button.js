@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
-import { VsCodeContext } from "./vs-code-context";
-import { Button } from "./core.styles.js";
+import { VsCodeContext } from "../vs-code-context";
+import { Button } from "../core.styles.js";
 
 export function CopyText({ textToCopy, children, successText }) {
   const { vscode } = useContext(VsCodeContext);

@@ -3,7 +3,7 @@ import { LanceBar, Logo, Title, SupVersion } from "./lance-bar.styles";
 import { ListToggles } from "./list-toggles";
 import { Stats } from "./stats";
 import { ButtonLink } from "./stats/stats.styles";
-import { ToggleDetails } from "./toggle-details";
+import { ToggleDetails } from "./details-view/toggle-details";
 
 export class TogglesViewer extends Component {
   constructor(props) {

@@ -1,21 +1,21 @@
 import React from "react";
 
-import { uniqueKey } from "./unique-key";
+import { uniqueKey } from "../unique-key";
 import { CopyText } from "./copy-button";
-import { RelativeTimeStamp } from "./relative-time-stamp";
+import { RelativeTimeStamp } from "../relative-time-stamp";
 import { Maintainer } from "./maintainer";
-import { ListPlugins } from "./list-plugins";
-import { EnvironmentVariation } from "./details-view/environment-variation";
-import { ToggleBadge } from "./details-view/toggle-badge";
-import { HandleToggleState } from "./details-view/handle-toggle-state";
+import { ListPlugins } from "../list-plugins";
+import { EnvironmentVariation } from "./environment-variation";
+import { ToggleBadge } from "./toggle-badge";
+import { HandleToggleState } from "./handle-toggle-state";
 
-import { LightBadge } from "./badge.styles";
-import { FirstHeading, SecondHeading, Button } from "./core.styles";
+import { LightBadge } from "../badge.styles";
+import { FirstHeading, SecondHeading, Button } from "../core.styles";
 import {
   ThemeLabel,
   VariationToggleLayout,
   EnvironmentToggleLayout
-} from "./toggle-data-layout.styles";
+} from "../toggle-data-layout.styles";
 
 export function ToggleDetails({ toggleDetails }) {
   return (
