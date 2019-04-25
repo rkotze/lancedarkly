@@ -52,4 +52,5 @@ export const PositiveAlert = styled.div`
 `;
 export const Right = styled.div`
   text-align: right;
+  margin-bottom: 7px;
 `;
