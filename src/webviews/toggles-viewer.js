@@ -30,7 +30,7 @@ export class TogglesViewer extends Component {
     return (
       <div>
         <LanceBar>
-          <Logo src={`${MEDIA_URI}/lancedarkly-logo.svg`} />
+          <Logo mediaUri={MEDIA_URI} />
 
           <Title>
             LanceDarkly <SupVersion>v{VERSION}</SupVersion>

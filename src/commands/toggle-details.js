@@ -29,10 +29,16 @@ function toggleDetails({ context }) {
             retainContextWhenHidden: true // prevents rebuilding the view when switching tabs
           }
         );
-
-        panel.iconPath = vscode.Uri.file(
-          context.asAbsolutePath("resources/lancedarkly-logo.svg")
+        const light = vscode.Uri.file(
+          context.asAbsolutePath("media/lancedarkly-logo-dark.svg")
         );
+        const dark = vscode.Uri.file(
+          context.asAbsolutePath("media/lancedarkly-logo-light.svg")
+        );
+        panel.iconPath = {
+          light,
+          dark
+        };
 
         panel.webview.html = getWebviewContent(context, settings);
         messageListener(panel.webview, context);
