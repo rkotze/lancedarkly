@@ -80,7 +80,9 @@ function getWebviewContent(context, settings) {
 <script>
 var MEDIA_URI = '${mediaUri}';
 var VERSION = '${packageJson.version}';
-var BASE_URI = '${settings.baseURI}';</script>
+var BASE_URI = '${settings.baseURI}';
+var PROJECT = '${settings.defaultProject}';
+</script>
 <script src="${scriptUri}"></script>
 </body>
 </html>`;
