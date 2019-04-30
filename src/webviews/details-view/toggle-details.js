@@ -16,6 +16,7 @@ import {
   VariationToggleLayout,
   EnvironmentToggleLayout
 } from "../toggle-data-layout.styles";
+import { ToggleConditionals } from "./toggle-conditionals";
 
 export function ToggleDetails({ toggleDetails }) {
   return (
@@ -84,6 +85,10 @@ export function ToggleDetails({ toggleDetails }) {
                   Open
                 </Button>
               </div>
+              <ToggleConditionals
+                rules={envDetails.rules}
+                prerequisites={envDetails.prerequisites}
+              />
             </EnvironmentToggleLayout>
           );
         })}
