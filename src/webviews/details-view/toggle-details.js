@@ -2,7 +2,6 @@ import React from "react";
 
 import { uniqueKey } from "../unique-key";
 import { CopyText } from "./copy-button";
-import { FindReferences } from "./find-references-button";
 import { RelativeTimeStamp } from "../relative-time-stamp";
 import { Maintainer } from "./maintainer";
 import { ListPlugins } from "../list-plugins";
@@ -34,11 +33,11 @@ export function ToggleDetails({ toggleDetails }) {
       )}
       <p>
         <ThemeLabel>Key:</ThemeLabel>{" "}
-        <LightBadge>{toggleDetails.key}</LightBadge>{" "}
+        <LightBadge>{toggleDetails.key}</LightBadge>
+        {"   "}
         <CopyText textToCopy={toggleDetails.key} successText="Copied">
           Copy key
-        </CopyText>{" "}
-        <FindReferences ldKey={toggleDetails.key} />
+        </CopyText>
       </p>
       <p>
         <ThemeLabel>Kind:</ThemeLabel>{" "}

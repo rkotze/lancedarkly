@@ -1,6 +1,5 @@
 const { fetchTogglesAction } = require("../vscode/fetch-toggles");
 const { copyLdKeyAction } = require("../vscode/copy-ld-key-clipboard");
-const { findLdKeyReferenceAction } = require("../vscode/find-ld-key-reference");
 const { resolvePluginsAction } = require("../vscode/load-plugins");
 const { confirmToggleState } = require("../vscode/update-toggle-state");
 // example function
@@ -25,8 +24,7 @@ exports.messageListener = function messageListener(webview, context) {
       fetchTogglesAction,
       copyLdKeyAction,
       resolvePluginsAction,
-      confirmToggleState,
-      findLdKeyReferenceAction
+      confirmToggleState
     ]),
     undefined,
     context.subscriptions
