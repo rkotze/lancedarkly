@@ -1,4 +1,4 @@
-# LanceDarkly
+<h1> <img alt="lancedarkly logo" src="https://user-images.githubusercontent.com/10452163/58038609-3d5e2880-7b28-11e9-9a6c-d219a9a617e0.png" /> LanceDarkly</h1>
 
 [![](https://vsmarketplacebadge.apphb.com/version-short/RichardKotze.lancedarkly.svg)](https://marketplace.visualstudio.com/items?itemName=RichardKotze.lancedarkly)
 
@@ -7,6 +7,8 @@
 1. [Features](#features)
 1. [Contributing](https://github.com/rkotze/lancedarkly/blob/master/CONTRIBUTING.md)
 1. [Plugins API](#plugins)
+
+![image](https://user-images.githubusercontent.com/10452163/58037858-5960ca80-7b26-11e9-9b45-b7acd5ba178c.png)
 
 ### Problem
 
