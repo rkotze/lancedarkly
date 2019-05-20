@@ -2,7 +2,7 @@
   "name": "lancedarkly",
   "displayName": "LanceDarkly - view LaunchDarkly toggles",
   "description": "Convenient overview of LaunchDarkly toggles for all environments",
-  "version": "0.5.0",
+  "version": "1.0.0",
   "publisher": "RichardKotze",
   "engines": {
     "vscode": "^1.29.0"
@@ -14,7 +14,7 @@
   "categories": [
     "Other"
   ],
-  "icon": "resources/lancedarkly-logo.png",
+  "icon": "resources/lancedarkly-logo-dark.png",
   "galleryBanner": {
     "color": "#232323",
     "theme": "dark"
