@@ -2,8 +2,6 @@
 
 [![](https://vsmarketplacebadge.apphb.com/version-short/RichardKotze.lancedarkly.svg)](https://marketplace.visualstudio.com/items?itemName=RichardKotze.lancedarkly)
 
-> Beta release
-
 1. [Get started](#get-started)
 1. [Commands](#commands)
 1. [Features](#features)
@@ -16,7 +14,7 @@ Switching between VS Code, LaunchDarkly web app and other toggle integrations is
 
 ### Solution
 
-A VS Code extension to bring LaunchDarkly toggle management closer to your development environment and show **all** environment toggle states.
+A VS Code extension to bring LaunchDarkly toggle management closer to your development environment and show **all** environment toggle states. Toggle on|off from VS Code.
 
 ## Get started
 
@@ -41,12 +39,14 @@ Update your setting in VS Code under `LanceDarkly`. See image below:
 
 - List all toggles in a project with a total count
 - Search for toggles by **name** and **description**
+- Sort toggles by created date
 - Quick overview of toggle details:
   - Title, created date, description, key and kind
   - Maintainer information
   - Variations: value and name
   - Environments: show **on** or **off** state
   - Show what variant is set for the selected toggle state
+  - Show a count of rules and prerequisites each environment
 - Update toggle state on/off per environment
 - Open toggle in LaunchDarkly
 - Copy key to clipboard

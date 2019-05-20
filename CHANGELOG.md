@@ -2,6 +2,15 @@
 
 Follows [Semantic Versioning](https://semver.org/).
 
+## [1.0.0] -- 2019-05-20
+
+### Added
+
+- Light and dark logo styling to handle different themes
+- Sort toggles by created date
+- Show a count of rules and prerequisites each environment
+- Rerunning the command to open Lancedarkly will open in the same tab rather than launching another tab.
+
 ## [0.5.0] -- 2019-04-17
 
 ### Added
