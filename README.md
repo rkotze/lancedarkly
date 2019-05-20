@@ -8,7 +8,7 @@
 1. [Contributing](https://github.com/rkotze/lancedarkly/blob/master/CONTRIBUTING.md)
 1. [Plugins API](#plugins)
 
-![image](https://user-images.githubusercontent.com/10452163/58037858-5960ca80-7b26-11e9-9b45-b7acd5ba178c.png)
+![Lancedarkly toggle view](https://user-images.githubusercontent.com/10452163/58038723-ae054500-7b28-11e9-8799-2d7b5b9a72b1.png)
 
 ### Problem
 
@@ -40,7 +40,8 @@ Update your setting in VS Code under `LanceDarkly`. See image below:
 ### Features
 
 - List all toggles in a project with a total count
-- Search for toggles by **name** and **description**
+- [Dashboard](#dashboard) to count and group toggles by age
+- [Search for toggles](#filtersearch-toggles) by **name**, **key** and **description**
 - Sort toggles by created date
 - Quick overview of toggle details:
   - Title, created date, description, key and kind
@@ -49,11 +50,29 @@ Update your setting in VS Code under `LanceDarkly`. See image below:
   - Environments: show **on** or **off** state
   - Show what variant is set for the selected toggle state
   - Show a count of rules and prerequisites each environment
-- Update toggle state on/off per environment
+- [Update toggle state on/off](#toggle-onoff) per environment
 - Open toggle in LaunchDarkly
 - Copy key to clipboard
 - Settings for **defaultProject** and **accessToken**
 - Display data from third parties using the LanceDarkly Plugin API
+
+### Toggle ON/OFF
+
+Confirm with optional message to toggle feature ON.
+
+![Popup confirm toggle ON](https://user-images.githubusercontent.com/10452163/58038930-3c79c680-7b29-11e9-91d7-b8d418ce5aa3.png)
+
+### Dashboard
+
+Dashboard summary of toggles in the project.
+
+![Dashboard of toggles](https://user-images.githubusercontent.com/10452163/58039054-8b276080-7b29-11e9-8c98-7589462c531d.png)
+
+### Filter/search toggles
+
+Search toggles by name, key or description.
+
+![Filter toggles by name](https://user-images.githubusercontent.com/10452163/58039220-fcffaa00-7b29-11e9-8f6b-e753dfe0c40a.png)
 
 ### Plugins
 
